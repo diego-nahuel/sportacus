@@ -13,11 +13,12 @@ import Contacto from '../pages/Contacto';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop';
 
+
 export default function WebsiteLayout() {
     return (
         <>
             <BrowserRouter>
-                
+                <ScrollToTop/>
                 <Header />
                 <HeaderBar />
                 <Routes>
