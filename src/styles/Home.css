@@ -1,0 +1,15 @@
+.Contenido {
+    margin: 15px 0;
+}
+
+.Cards-Contenedor {
+ background-color: rgb(0, 0, 139, 0.25);
+}
+
+.Card {
+    background-color: darkgoldenrod;
+}
+
+.IMG-Card {
+    max-width: 320px;
+}
