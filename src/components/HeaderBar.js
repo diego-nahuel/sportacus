@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import '../styles/Header.css';
 
 export default function HeaderBar() {
   return (
-    <div>HeaderBar</div>
+    <div className='HeaderBar'></div>
   )
 }
