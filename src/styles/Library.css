@@ -8,6 +8,10 @@
     font-family: 'Poppins';
   }
 
+  .main-height{
+    min-height: 92.5vh;
+  }
+
 .padding-top {
     background-color: black;
     padding-top: 10vh;
@@ -48,6 +52,10 @@
   }
   
   .justify-center {
+    justify-content: center;
+    align-items: center;
+  }
+  .justify-start {
     justify-content: center;
     align-items: center;
   }
