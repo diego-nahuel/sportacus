@@ -47,14 +47,6 @@
     height: 125px;
 }
 
-.Botom-NuevoComentario {
-  border: none;
+.Boton-NuevoComentario {
   border-radius: 0 0 3px 3px;
-  background-color: whitesmoke;
-  padding: 5px 10px;
-  transition: ease-in-out 0.25s;
-}
-
-.Botom-NuevoComentario:hover {
-  background-color: aqua;
 }
