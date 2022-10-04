@@ -12,37 +12,21 @@
   min-height: 92.5vh;
 }
 
+.container-width {
+  max-width: 990px;
+  width: 95%;
+}
+
 .main-bg {
   background: url(https://wallpapercave.com/wp/wp4793571.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.gap-15 {
-  gap: 15px;
-}
-
-.gap-30 {
-  gap: 30px;
-}
-
-.padding-top {
-  background-color: black;
-  padding-top: 10vh;
-}
+/*--------------------------------------------*/
 
 .text-center {
   text-align: center;
-}
-
-.justify-start {
-  display: flex;
-  justify-content: start;
-}
-
-.justify-start {
-  display: flex;
-  justify-content: end;
 }
 
 .text-light {
@@ -50,6 +34,7 @@
   text-decoration: none;
 }
 
+/*--------------------------------------------*/
 .row {
   display: flex;
   flex-flow: row;
@@ -58,6 +43,12 @@
 .col {
   display: flex;
   flex-flow: column;
+}
+
+/*--------------------------------------------*/
+.space-evenly {
+  justify-content: space-evenly;
+  align-content: space-evenly;
 }
 
 .space-between {
@@ -70,35 +61,54 @@
   align-content: space-around;
 }
 
+/*--------------------------------------------*/
+.justify-start {
+  display: flex;
+  justify-content: start;
+}
+
+.justify-start {
+  display: flex;
+  justify-content: end;
+}
+
 .space-evenly {
+  display: flex;
   justify-content: space-evenly;
   align-content: space-evenly;
 }
 
 .justify-center {
+  display: flex;
   justify-content: center;
 }
 
 .align-center {
+  display: flex;
   align-items: center;
 }
 
 .justify-start {
+  display: flex;
   justify-content: start;
 }
 
 .align-start {
+  display: flex;
   align-items: start;
 }
 
 .justify-end {
+  display: flex;
   justify-content: end;
 }
 
 .align-end {
+  display: flex;
   align-items: end;
 }
 
+/*--------------------------------------------*/
 .text-border-black {
   -webkit-text-stroke: 2px black;
 }
@@ -118,18 +128,95 @@
   align-self: center;
 }
 
+/*--------------------------------------------*/
 .text-indent {
   text-indent: 1em;
 }
 
+/*--------------------------------------------*/
 .submit-button {
-  border-radius: 3px;
   border: none;
-  background-color: whitesmoke;
+  background-color: aqua;
   padding: 5px 10px;
   transition: ease-in-out 0.25s;
 }
 
 .submit-button:hover {
-  background-color: aqua;
+  background-color: rgb(0, 150, 255);
+}
+
+.form-padding {
+  padding: 5px 10px;
+}
+
+/*--------------------------------------------*/
+.ypad-5 {
+  padding: 5px 0;
+}
+
+.ypad-10 {
+  padding: 10px 0;
+}
+
+.ypad-15 {
+  padding: 15px 0;
+}
+
+.xpad-5 {
+  padding: 0 5px;
+}
+
+.xpad-10 {
+  padding: 0 10px;
+}
+
+.xpad-15 {
+  padding: 0 15px;
+}
+
+/*--------------------------------------------*/
+.br3 {
+  border-radius: 3px;
+  border: none;
+}
+
+.br6 {
+  border-radius: 3px;
+  border: none;
+}
+
+/*--------------------------------------------*/
+.w25 {
+  width: 25%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w75 {
+  width: 75%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+/*--------------------------------------------*/
+.gap-15 {
+  gap: 15px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+/*--------------------------------------------*/
+.resize-none {
+  resize: none;
+}
+
+/*--------------------------------------------*/
+.blur {
+  backdrop-filter: blur(3px);
 }
