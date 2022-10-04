@@ -1,5 +1,4 @@
 .Contenedor-Comunidad {
-    background-color: black;
     padding: 15px;
     max-width: 100%;
 }
@@ -33,7 +32,6 @@
 }
 
 .Contenedor-NuevoComentario {
-    background-color: gray;
     max-width: 900px;
     width: 100%;
 }
@@ -47,14 +45,6 @@
     height: 125px;
 }
 
-.Botom-NuevoComentario {
-  border: none;
-  border-radius: 0 0 3px 3px;
-  background-color: whitesmoke;
-  padding: 5px 10px;
-  transition: ease-in-out 0.25s;
-}
-
-.Botom-NuevoComentario:hover {
-  background-color: aqua;
-}
+.Boton-NuevoComentario {
+    border-radius: 0 0 3px 3px;
+  }
