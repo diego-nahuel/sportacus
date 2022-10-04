@@ -1,0 +1,27 @@
+.bg {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.Columna-Contacto {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.Info {
+    width: 100%;
+}
+
+.Mensaje {
+    height: 125px;
+}
+
+
+@media (min-width: 768px) {
+    .Columna-Contacto {
+        flex-flow: row;
+    }
+    .Info {
+        width: 50%;
+    }
+}
