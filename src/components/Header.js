@@ -1,11 +1,12 @@
 import '../styles/Header.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
 
 const pages = [
   { name: 'Home', to: '/' },
   { name: 'Productos', to: '/productos' },
   { name: 'Alquileres', to: '/alquileres' },
+  { name: 'Comunidad', to: '/comunidad' },
   { name: 'Contacto', to: '/contacto' },
 ]
 

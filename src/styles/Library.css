@@ -19,12 +19,12 @@
 }
 
 .gap-15 {
- gap: 15px;
+  gap: 15px;
 }
 
 .gap-30 {
   gap: 30px;
- }
+}
 
 .padding-top {
   background-color: black;
@@ -38,6 +38,11 @@
 .justify-start {
   display: flex;
   justify-content: start;
+}
+
+.justify-start {
+  display: flex;
+  justify-content: end;
 }
 
 .text-light {
@@ -57,27 +62,41 @@
 
 .space-between {
   justify-content: space-between;
-  align-items: center;
+  align-content: space-between;
 }
 
 .space-around {
   justify-content: space-around;
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-  align-items: center;
-}
-
-.justify-start {
-  justify-content: center;
-  align-items: center;
+  align-content: space-around;
 }
 
 .space-evenly {
   justify-content: space-evenly;
+  align-content: space-evenly;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
+.align-start {
+  align-items: start;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.align-end {
+  align-items: end;
 }
 
 .text-border-black {
@@ -101,4 +120,16 @@
 
 .text-indent {
   text-indent: 1em;
+}
+
+.submit-button {
+  border-radius: 3px;
+  border: none;
+  background-color: whitesmoke;
+  padding: 5px 10px;
+  transition: ease-in-out 0.25s;
+}
+
+.submit-button:hover {
+  background-color: aqua;
 }
