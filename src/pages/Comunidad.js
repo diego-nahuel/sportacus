@@ -6,19 +6,21 @@ import NuevoComentario from '../components/Comentarios/NuevoComentario'
 function Comunidad() {
   return (
     <>
-      <div className='Contenedor-Comunidad col main-height main-bg align-center gap-15'>
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <Comentarios />
-      <NuevoComentario />
-      </div>
+      <main className='main-height main-bg justify-center'>
+        <div className='bg blur container-width col align-center ypad-15 gap-15'>
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <Comentarios />
+          <NuevoComentario />
+        </div>
+      </main>
     </>
   )
 }

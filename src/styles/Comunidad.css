@@ -1,11 +1,8 @@
-.Contenedor-Comunidad {
-    padding: 15px;
-    max-width: 100%;
-}
-
 .Contenedor-Comentario {
     background-color: whitesmoke;
-    max-width: 900px;
+    max-width: 100%;
+    width: 850px;
+    margin: 0 10px;
     border-radius: 3px;
 }
 
@@ -32,8 +29,9 @@
 }
 
 .Contenedor-NuevoComentario {
-    max-width: 900px;
+    max-width: 850px;
     width: 100%;
+    margin: 0 10px;
 }
 
 .Textarea-NuevoComentario {
