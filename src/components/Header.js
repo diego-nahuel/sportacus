@@ -40,7 +40,7 @@ function Header() {
   return (
     <>
       <div className='NavBar NavBar-Links'>
-        <div>Logo</div>
+        <img className='Logo' src='/LogoNav02.png' alt='logoSportacus'/>
 
         <div className='Row-Menu row'>
           {pages.map(navLinks)}
