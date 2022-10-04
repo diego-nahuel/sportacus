@@ -5,7 +5,7 @@ export default function NuevoComentario() {
         <>
             <div className='Contenedor-NuevoComentario col'>
                 <textarea type='text' name='comentario' className='Textarea-NuevoComentario ' /* onChange={}  */ placeholder="Escriba su comentario"></textarea>
-                <button className='Botom-NuevoComentario' /* onClick={} */ >Enviar</button>
+                <button className='Boton-NuevoComentario submit-button' /* onClick={} */ >Enviar</button>
             </div>
         </>
     )
