@@ -1,6 +1,6 @@
 import React from 'react'
 import Carrusel from '../components/Carrusel'
-import '../styles/Home.css'
+import '../styles/Inicio.css'
 
 const sports = [
   { name: 'Sport1', photo:'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Sport 1' },
@@ -27,7 +27,7 @@ const productList = (product) => <div className='Card'>
 export default function Home() {
   return (
     <>
-      <div className='main-height main-bg justify-center col text-light'>
+      <div className='main-height main-bg align-center col text-light'>
         <Carrusel />
 
         <h2>Slogan</h2>
