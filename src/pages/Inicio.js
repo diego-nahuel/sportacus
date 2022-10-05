@@ -28,24 +28,26 @@ export default function Home() {
   return (
     <>
       <main className='main-height main-bg align-center col text-light'>
+
+        <div className='Slogan'>
+          <h1 className='Slogan01'> Todas las canchas <span className='Slogan02'> en un solo lugar</span></h1>
+        </div>
+
         <Carrusel />
 
+        {/* ------------------------------------Cards------------------------------------ */}
         <div className='container-width pad-10 bg blur'>
-          <h1 className='text-center'>Slogan</h1>
-
-          {/* ------------------------------------Cards------------------------------------ */}
           <div className='col gap-15'>
             <div>
               <h3>Destacados</h3>
               <div className='justify-center row gap-30'>
                 {sports.map(sportList)}
               </div>
-            </div>
-
-            <div>
-              <h3>Deportes</h3>
-              <div className='justify-center row gap-30'>
-                {products.map(productList)}
+              <div>
+                <h3>Deportes</h3>
+                <div className='justify-center row gap-30'>
+                  {products.map(productList)}
+                </div>
               </div>
             </div>
           </div>

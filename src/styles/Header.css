@@ -1,7 +1,7 @@
 .NavBar {
     display: flex;
-    min-height: 7.5vh;
-    justify-content: space-between;
+    min-height: 8.5vh;
+    justify-content: space-evenly;
     padding: 0 1rem;
     align-items: center;
     width: 100%;
@@ -19,11 +19,23 @@
 
 .HeaderBar {
     background-color: rgb(65, 65, 65);
-    height: 7.5vh;
+    height: 8.5vh;
 }
 
-.Logo {
-    height: 60px;
+.Logo-Desktop-Container {
+    width: 25%;
+}
+
+.Logo-Desktop {
+    width: 45%;
+}
+
+.Logo-Mobile-Container {
+    width: 50%;
+}
+
+.Logo-Mobile {
+    height: 4.5vh;
 }
 
 .Burger-IMG {
@@ -33,14 +45,15 @@
 }
 
 .Col-Menu {
-    text-align: left;
     gap: 15px;
-    padding: 2.5vh 0;
-    width: 100%;
+    padding: 15px 0;
 }
 
 .Row-Menu {
-    padding: 0 15px 0 0;
+    gap: 15px;
+}
+
+.User-Menu {
     gap: 15px;
 }
 
@@ -69,6 +82,7 @@
 .Avatar-Links {
     padding: 4px;
 }
+
 .Avatar-Links:hover {
     background-color: rgba(255, 0, 0, 0.5);
     transition: ease-in-out 0.3s;
@@ -79,10 +93,12 @@
     .Hide-Nav-Desktop {
         display: none;
     }
+
     .NavBar {
         align-items: flex-start;
         padding: 20px 1rem 0 1rem;
     }
+
     .User-Menu {
         display: flex;
         flex-flow: column;
@@ -93,20 +109,58 @@
     .Hide-Nav-Burger {
         display: none;
     }
+
     .Link-Hover {
         padding: 10px;
     }
+
     .Link-Hover:hover {
         background-color: rgba(255, 0, 0, 0.5);
         transition: ease-in-out 0.3s;
         border-radius: 5px;
     }
+
     .Logo-Center-Desktop {
         width: 7.5vw;
     }
+
     .User-Avatar {
         display: flex;
         flex-flow: column;
         width: 7.5vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Logo-Desktop-Container {
+        display: none;
+    }
+
+    .Logo-Desktop {
+        display: none;
+    }
+
+    .Row-Menu {
+        display: none;
+    }
+    .User-Menu {
+        align-items: end;
+    }
+}
+
+@media (min-width: 1025px) {
+    .Logo-Mobile-Container {
+        display: none;
+    }
+
+    .Logo-Mobile {
+        display: none;
+    }
+
+    .Col-Menu {
+        display: none;
+    }
+    .User-Menu {
+        justify-content: center;
     }
 }
