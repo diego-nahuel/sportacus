@@ -40,18 +40,29 @@ function Header() {
 
   return (
     <>
-      <div className='NavBar NavBar-Links'>
-        <img className='Logo' src='/LogoNav02-Light.png' alt='logoSportacus'/>
-
-        <div className='Row-Menu row'>
+      <header className='NavBar NavBar-Links w100'>
+        {/* Mobile */}
+        <nav className='Col-Menu col w25 align-start'>
           {pages.map(navLinks)}
+        </nav>
+        <div className='Logo-Mobile-Container align-start justify-center'>
+          <img className='Logo-Mobile' src='/LogoSportacus01-Light.png' alt='logoSportacus' />
         </div>
 
-        <div className='Row-Menu row'>
+        {/* Desktop */}
+        <div className='Logo-Desktop-Container justify-center'>
+          <img className='Logo-Desktop' src='/LogoNav02-Light.png' alt='logoSportacus' />
+        </div>
+        <nav className='Row-Menu row w50 justify-center'>
+          {pages.map(navLinks)}
+        </nav>
+
+        {/* Cart/Users */}
+        <div className='User-Menu row w25'>
           <div>Carrito</div>
           <div>Usuarios</div>
         </div>
-      </div>
+      </header>
     </>
   )
 }
