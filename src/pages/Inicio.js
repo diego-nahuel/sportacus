@@ -28,10 +28,14 @@ export default function Home() {
   return (
     <>
       <div className='main-height main-bg align-center col text-light'>
+        
+        <div className='Slogan'>
+        <h2 className='Slogan01'> Todas las canchas </h2>
+        <h2 className='Slogan02'> en un solo lugar </h2>
+        </div>
+        
         <Carrusel />
-
-        <h2>Slogan</h2>
-
+        
         {/* ------------------------------------Cards------------------------------------ */}
         <div className='Contenido col gap-15'>
           <div>
