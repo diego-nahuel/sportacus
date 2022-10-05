@@ -60,7 +60,9 @@ function Header() {
         {/* Cart/Users */}
         <div className='User-Menu row w25'>
           <div>Carrito</div>
-          <div>Usuarios</div>
+          <div>
+            {userMenu.map(userLinks)}
+          </div>
         </div>
       </header>
     </>
