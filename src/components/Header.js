@@ -41,7 +41,7 @@ function Header() {
   return (
     <>
       <div className='NavBar NavBar-Links'>
-        <img className='Logo' src='/LogoNav02.png' alt='logoSportacus'/>
+        <img className='Logo' src='/LogoNav02-Light.png' alt='logoSportacus'/>
 
         <div className='Row-Menu row'>
           {pages.map(navLinks)}
