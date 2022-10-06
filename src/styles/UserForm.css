@@ -1,4 +1,53 @@
 .Form-Container {
     min-height: 150px;
     max-height: 500px;
+    min-width: 300px;
+    max-width: 450px;
+    width: 75%;
+}
+
+.User-Info {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    min-height: 150px;
+    max-height: 500px;
+    min-width: 300px;
+    max-width: 475px;
+    width: 50%;
+}
+
+.Usuario-Avatar {
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.Profile-Divider {
+  border-top: 2px solid whitesmoke;
+  border-radius: 3px;
+  opacity: 25%;
+}
+
+@media (min-width: 768px) {
+    .User-Info {
+        display: flex;
+        flex-flow: row;
+        justify-items: center;
+        min-height: 150px;
+        max-height: 500px;
+        min-width: 300px;
+        max-width: 475px;
+        width: 50%;
+    }
+    .Form-Container {
+        min-width: 400px;
+        width: 50%;
+    }
+    .Profile-Divider {
+        border-left: 2px solid whitesmoke;
+      }
 }
