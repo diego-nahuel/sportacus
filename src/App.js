@@ -1,18 +1,15 @@
-import logo from './logo.svg';
 import './styles/Library.css'
 import './App.css';
-import Header from './components/Header';
-import HeaderBar from './components/HeaderBar';
-import Footer from './components/Footer'
 import WebsiteLayout from './layouts/WebsiteLayout';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   return (
     <>
-      <Header />
-      <HeaderBar />
+    <Provider store={store}>
       <WebsiteLayout />
-      <Footer />
+    </Provider>
     </>
   );
 }

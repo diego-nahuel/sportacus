@@ -2,80 +2,367 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+}
+
+.main-height {
+  min-height: 91.5vh;
+}
+
+.container-width {
+  max-width: 1040px;
+  width: 95%;
+}
+
+.main-bg {
+  background: url(https://wallpapercave.com/wp/wp4793571.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.w-bold {
+  font-weight: bold;
+}
+
+.w-normal {
+  font-weight: normal;
+}
+
+.transparent-75 {
+  filter: alpha(opacity=75);
+  opacity: 0.75;
   }
 
-.padding-top {
-    background-color: black;
-    padding-top: 10vh;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .justify-start {
-    display: flex;
-    justify-content: start;
-  }
-  
-  .text-light {
-    color: rgb(235, 235, 235);
-    text-decoration: none;
-  }
-  
-  .row {
-    display: flex;
-    flex-flow: row;
-  }
-  
-  .col {
-    display: flex;
-    flex-flow: column;
-  }
-  
-  .space-between {
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .space-around {
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .justify-center {
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .space-evenly {
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  
-  .text-border-black {
-    -webkit-text-stroke: 2px black;
-  }
+/*--------------------------------------------*/
 
-.decoration-none{
-    text-decoration: none;
-    color: black;
-  }
-  
-  .flex-center {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    justify-self: center;
-    align-content: center;
-    align-items: center;
-    align-self: center;
-  }
-  
-  .text-indent {
-    text-indent: 1em;
-  }
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  color: rgb(235, 235, 235);
+  text-decoration: none;
+}
+
+/*--------------------------------------------*/
+.row {
+  display: flex;
+  flex-flow: row;
+}
+
+.col {
+  display: flex;
+  flex-flow: column;
+}
+
+/*--------------------------------------------*/
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.space-around {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+/*--------------------------------------------*/
+.justify-start {
+  display: flex;
+  justify-content: start;
+  justify-items: start;
+  justify-self: start;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+
+.justify-end {
+  display: flex;
+  justify-content: end;
+  justify-items: end;
+  justify-self: end;
+}
+
+.align-start {
+  display: flex;
+  align-items: start;
+  align-items: start;
+  align-self: start;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  align-self: center;
+}
+
+.align-end {
+  display: flex;
+  align-items: end;
+  align-items: end;
+  align-self: end;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: start;
+  justify-items: start;
+  justify-self: start;
+  align-content: start;
+  align-items: start;
+  align-self: start;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: end;
+  justify-items: end;
+  justify-self: end;
+  align-content: end;
+  align-items: end;
+  align-self: end;
+}
+
+/*--------------------------------------------*/
+.text-border-black {
+  -webkit-text-stroke: 2px black;
+}
+
+.decoration-none {
+  text-decoration: none;
+  color: black;
+}
+
+/*--------------------------------------------*/
+.text-indent {
+  text-indent: 1em;
+}
+
+.check-indent {
+  text-indent: 0.3em;
+}
+
+/*--------------------------------------------*/
+.submit-button {
+  border: none;
+  background-color: aqua;
+  padding: 5px 10px;
+  transition: ease-in-out 0.25s;
+}
+
+.submit-button:hover {
+  background-color: rgb(0, 150, 255);
+}
+
+.button-check {
+  transition: ease-in-out 0.25s;
+  background: none;
+  color: whitesmoke;
+}
+
+.button-check:hover {
+  background-color: #178bff;
+}
+
+.button-check:active {
+  background-color: #ff3847;
+}
+
+.form-padding {
+  padding: 5px 10px;
+}
+
+.form-width {
+  min-width: 250px;
+}
+
+.bg-light {
+  background-color: whitesmoke;
+}
+.bg-grey {
+  background-color: grey;
+}
+.bg-dark {
+  background-color: rgb(39, 39, 39);
+}
+
+/*--------------------------------------------*/
+.pad-5 {
+  padding: 5px;
+}
+
+.pad-10 {
+  padding: 10px;
+}
+
+.pad-15 {
+  padding: 15px;
+}
+
+.ypad-5 {
+  padding: 5px 0;
+}
+
+.ypad-10 {
+  padding: 10px 0;
+}
+
+.ypad-15 {
+  padding: 15px 0;
+}
+
+.ypad-30 {
+  padding: 30px 0;
+}
+
+.xpad-5 {
+  padding: 0 5px;
+}
+
+.xpad-10 {
+  padding: 0 10px;
+}
+
+.xpad-15 {
+  padding: 0 15px;
+}
+
+.xpad-30 {
+  padding: 0 30px;
+}
+
+/*--------------------------------------------*/
+.mar-5 {
+  margin: 5px;
+}
+
+.mar-10 {
+  margin: 10px;
+}
+
+.mar-15 {
+  margin: 15px;
+}
+
+.ymar-5 {
+  margin: 5px 0;
+}
+
+.ymar-10 {
+  margin: 10px 0;
+}
+
+.ymar-15 {
+  margin: 15px 0;
+}
+
+.ymar-30 {
+  margin: 30px 0;
+}
+
+.xmar-5 {
+  margin: 0 5px;
+}
+
+.xmar-10 {
+  margin: 0 10px;
+}
+
+.xmar-15 {
+  margin: 0 15px;
+}
+
+.xmar-30 {
+  margin: 0 30px;
+}
+
+/*--------------------------------------------*/
+.br3 {
+  border-radius: 3px;
+  border: none;
+}
+
+.br6 {
+  border-radius: 3px;
+  border: none;
+}
+
+/*--------------------------------------------*/
+.w25 {
+  width: 25%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w75 {
+  width: 75%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+/*--------------------------------------------*/
+.gap-15 {
+  gap: 15px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+/*--------------------------------------------*/
+.resize-none {
+  resize: none;
+}
+
+.display-none {
+  display: none;
+}
+
+/*--------------------------------------------*/
+.blur {
+  backdrop-filter: blur(3px);
+}
+
+/*--------------------------------------------*/
+.card-container {
+  display: flex;
+  flex-flow: wrap;
+}
+
+/*--------------------------------------------*/
+.xdivider {
+  /* border-top: 2px solid rgb(39, 39, 39); */
+  border-top: 2px solid whitesmoke;
+  margin: 10px 0;
+}

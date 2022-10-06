@@ -1,0 +1,166 @@
+.NavBar {
+    display: flex;
+    min-height: 8.5vh;
+    justify-content: space-evenly;
+    padding: 0 1rem;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    background-color: rgb(40, 40, 40);
+    backdrop-filter: blur(3px);
+}
+
+.NavBar-Links {
+    color: whitesmoke;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.HeaderBar {
+    background-color: rgb(65, 65, 65);
+    height: 8.5vh;
+}
+
+.Logo-Desktop-Container {
+    width: 25%;
+}
+
+.Logo-Desktop {
+    width: 45%;
+}
+
+.Logo-Mobile-Container {
+    width: 50%;
+}
+
+.Logo-Mobile {
+    height: 4.5vh;
+}
+
+.Burger-IMG {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.Col-Menu {
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.Row-Menu {
+    gap: 15px;
+}
+
+.User-Menu {
+    gap: 15px;
+}
+
+
+.Button-NavBar {
+    border: none;
+    background-color: transparent;
+}
+
+.User-Avatar {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 360px;
+}
+
+.User-Menu {
+    font-size: small;
+}
+
+.User-Avatar {
+    display: flex;
+    flex-flow: column;
+}
+
+.Avatar-Links {
+    padding: 4px;
+}
+
+.Avatar-Links:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+    transition: ease-in-out 0.3s;
+    border-radius: 5px;
+}
+
+@media (max-width: 1023px) {
+    .Hide-Nav-Desktop {
+        display: none;
+    }
+
+    .NavBar {
+        align-items: flex-start;
+        padding: 20px 1rem 0 1rem;
+    }
+
+    .User-Menu {
+        display: flex;
+        flex-flow: column;
+    }
+}
+
+@media (min-width: 1024px) {
+    .Hide-Nav-Burger {
+        display: none;
+    }
+
+    .Link-Hover {
+        padding: 10px;
+    }
+
+    .Link-Hover:hover {
+        background-color: rgba(255, 0, 0, 0.5);
+        transition: ease-in-out 0.3s;
+        border-radius: 5px;
+    }
+
+    .Logo-Center-Desktop {
+        width: 7.5vw;
+    }
+
+    .User-Avatar {
+        display: flex;
+        flex-flow: column;
+        width: 7.5vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Logo-Desktop-Container {
+        display: none;
+    }
+
+    .Logo-Desktop {
+        display: none;
+    }
+
+    .Row-Menu {
+        display: none;
+    }
+    .User-Menu {
+        align-items: end;
+    }
+}
+
+@media (min-width: 1025px) {
+    .Logo-Mobile-Container {
+        display: none;
+    }
+
+    .Logo-Mobile {
+        display: none;
+    }
+
+    .Col-Menu {
+        display: none;
+    }
+    .User-Menu {
+        justify-content: center;
+    }
+}

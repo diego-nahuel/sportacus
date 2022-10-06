@@ -1,0 +1,48 @@
+.Contenedor-Comentario {
+    background-color: whitesmoke;
+    max-width: 100%;
+    width: 850px;
+    margin: 0 10px;
+    border-radius: 3px;
+}
+
+.Usuario-Info {
+    background-color: aqua;
+    padding: 5px 20px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 3px 0 0 3px;
+}
+
+.Usuario-IMG {
+    width: 75px;
+    height: 75px;
+    border-radius: 360px;
+    object-fit: cover;
+}
+
+.Comentario {
+    max-width: 100%;
+    padding: 5px 10px;
+    overflow: hidden;
+    white-space: initial;
+}
+
+.Contenedor-NuevoComentario {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 10px;
+}
+
+.Textarea-NuevoComentario {
+    border: none;
+    border-radius: 3px 3px 0 0;
+    width: 100%;
+    resize: none;
+    padding: 5px 10px;
+    height: 125px;
+}
+
+.Boton-NuevoComentario {
+    border-radius: 0 0 3px 3px;
+  }
