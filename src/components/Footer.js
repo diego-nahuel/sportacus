@@ -12,7 +12,7 @@ const payVenues = [
   { name: 'PagoFácil', img: 'https://newsport.vteximg.com.br/arquivos/logo-pago-facil.svg?v=637432950063570000' },
   { name: 'RapiPago', img: 'https://newsport.vteximg.com.br/arquivos/logo-rapipago.svg?v=637432950058570000' },
 ]
-const payList = (option) => <img src={option.img} alt={option.name} />
+const payList = (option, index) => <img src={option.img} alt={option.name} key={index}/>
 
 export default function Footer() {
   function ScrollTop() {
