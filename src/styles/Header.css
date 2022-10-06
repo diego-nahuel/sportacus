@@ -66,6 +66,7 @@
 .User-Menu {
     display: flex;
     flex-flow: column;
+    padding-bottom: 10px;
 }
 
 .Links-Red {
@@ -120,5 +121,6 @@
     }
     .User-Menu {
         flex-flow: row;
+        padding-bottom: 0;
     }
 }
