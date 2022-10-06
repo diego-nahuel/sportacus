@@ -1,0 +1,20 @@
+.Slogan{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.Slogan01{
+    color:blue;
+}
+.Slogan02{
+    color:red;
+}
+.Card {
+    background-color: darkgoldenrod;
+}
+
+.IMG-Card {
+    max-width: 320px;
+}
