@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRegistroMutation } from '../features/authAPI'
+import { useSingUpMutation } from '../features/authAPI'
 // import { ToastContainer, toast } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
 
@@ -22,7 +22,7 @@ export default function SignUp() {
         ...user, [e.target.name]: e.target.value
     })
 }
-  const [signUp] = useRegistroMutation()
+  const [signUp] = useSingUpMutation()
   let Navigate = useNavigate()
 
   const handleSubmit = async (e) => {
