@@ -570,3 +570,12 @@
 .ydivider-dark {
   border-left: 2px solid rgb(40, 40, 40);
 }
+
+@media (max-width: 768px) {
+  .align-end-m {
+    display: flex;
+    align-items: end;
+    align-items: end;
+    align-self: end;
+  }
+}
