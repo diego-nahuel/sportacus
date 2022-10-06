@@ -1,4 +1,5 @@
 import React from 'react'
+import {useGetAllQuery} from '../features/productsApi'
 
 const products = [
   { name: 'Sport1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Sport 1' },
@@ -10,7 +11,7 @@ const products = [
 const productList = (product) =>
   <div className='Card'>
     <h4>{product.name}</h4>
-    <img className='IMG-Card' src={product.photo} />
+    <img className='IMG-Card' src={product.image} />
     <p>{product.description}</p>
   </div>
 
@@ -33,6 +34,9 @@ const sportSelect = (sport) =>
   <option>{sport.name}</option>
 
 export default function Productos() {
+  const allProduct = useGetAllQuery('').data.response
+
+  console.log(allProduct)
   return (
     <>
       <main className='main-bg main-height text-light justify-center'>
@@ -48,7 +52,7 @@ export default function Productos() {
             </select>
           </div>
           <div className='card-container justify-center gap-30'>
-            {products.map(productList)}
+            {allProduct.map(productList)}
           </div>
         </div>
       </main>
