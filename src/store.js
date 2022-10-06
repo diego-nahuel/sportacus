@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/userSlice";
 import { authAPI } from "./features/authAPI";
-import { productsApi } from "./features/productsAPI";
-
+import { productsApi} from "./features/productsApi";
 
 export default configureStore ({
     reducer: {
