@@ -15,27 +15,27 @@ export default function SignUp() {
   const [user, setUser] = useState({
     name: "", photo: "", mail: "", password: "", role: "user", from: "form"
   })
-  const userForm = (input) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder}  onChange={handleInput} />
+  const userForm = (input) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} onChange={handleInput} />
 
   const handleInput = e => {
     setUser({
-        ...user, [e.target.name]: e.target.value
+      ...user, [e.target.name]: e.target.value
     })
-}
+  }
   const [signUp] = useSingUpMutation()
   let Navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let {data, error} = await signUp(user)
-    if(error){
-        // Alerta
+    let { data, error } = await signUp(user)
+    if (error) {
+      // Alerta
     } else if (!data.success) {
-        // Alerta
+      // Alerta
     }
     else {
-        //Alerta
-        Navigate("/");
+      //Alerta
+      Navigate("/");
     }
   }
 
