@@ -83,16 +83,16 @@ export default function Productos() {
           <div className='FilterSort bg-dark br3 space-between w100'>
             <div className='Checkboxes justify-start'>
 
-              <button className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
-                <div className='row xpad-10'>
+              <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
+                <div className='row xpad-10 space-between'>
+                  <h5 className='text-light w-normal font-n ypad-5'>Categorías </h5>
                   <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
-                  <h3 className='text-light w-normal form-padding'>Categorías </h3>
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={freezeCheckbox}>
                     {sports.map(sportCheckMobile)}
                   </button> : null}
-              </button>
+              </div>
               {sports.map(sportCheckDesktop)}
             </div>
 
