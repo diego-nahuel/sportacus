@@ -7,15 +7,15 @@ import { useSingUpMutation } from '../features/authAPI'
 export default function SignUp() {
 
   const formSignUp = [
-    { name: 'text', type: 'name', placeholder: 'Nombre' },
-    { name: 'url', type: 'photo', placeholder: 'Avatar' },
-    { name: 'email', type: 'mail', placeholder: 'Email' },
-    { name: 'text', type: 'password', placeholder: 'Contraseña' },
+    { name: 'name', type: 'text', placeholder: 'Nombre' },
+    { name: 'photo', type: 'url', placeholder: 'Avatar' },
+    { name: 'mail', type: 'email', placeholder: 'Email' },
+    { name: 'password', type: 'password', placeholder: 'Contraseña' },
   ]
   const [user, setUser] = useState({
     name: "", photo: "", mail: "", password: "", role: "user", from: "form"
   })
-  const userForm = (input) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} onChange={handleInput} />
+  const userForm = (input,index) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} key={index} onChange={handleInput} />
 
   const handleInput = e => {
     setUser({
@@ -30,6 +30,7 @@ export default function SignUp() {
     let { data, error } = await signUp(user)
     if (error) {
       // Alerta
+      console.log(error);
     } else if (!data.success) {
       // Alerta
     }
