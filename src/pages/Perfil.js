@@ -8,7 +8,7 @@ export default function Profile() {
     name: 'Lionel',
     lastName: 'Messi',
     mail: 'messilio@gmail.com',
-    class: 'w-normal'
+    class: 'w-normal bpad-10'
   }
 
   const formUserData = [
@@ -27,7 +27,7 @@ export default function Profile() {
           <div className='User-Info justify-center bg-dark br3 row gap-30 pad-15'>
             <img src='https://wallpapercave.com/wp/wp4793571.jpg' alt='User Avatar' className='Usuario-Avatar justify-center' />
 
-            <div className='Profile-Divider'></div>
+            <div className='Profile-Divider transparent-25'></div>
 
             <dl className='text-light w-bold'>
               <dt>Nombre: </dt>
