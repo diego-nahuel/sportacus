@@ -34,9 +34,16 @@ const sportSelect = (sport) =>
   <option>{sport.name}</option>
 
 export default function Productos() {
-  const allProduct = useGetAllQuery('').data.response
+let {data:petition, isLoading, isSuccess} = useGetAllQuery('')
+if (isLoading) {
+  petition=[]
+}else if (isSuccess) {
+  petition=petition
+}
+let allProducts
+petition.response? allProducts=petition.response:allProducts=petition
 
-  console.log(allProduct)
+//  console.log(allProducts)
   return (
     <>
       <main className='main-bg main-height text-light justify-center'>
@@ -52,7 +59,7 @@ export default function Productos() {
             </select>
           </div>
           <div className='card-container justify-center gap-30'>
-            {allProduct.map(productList)}
+            {allProducts.map(productList)}
           </div>
         </div>
       </main>
