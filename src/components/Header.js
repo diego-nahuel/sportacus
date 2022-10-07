@@ -4,8 +4,9 @@ import { Link as LinkRouter } from 'react-router-dom';
 import pages from './Links/Pages'
 
 const userMenu = [
+  { name: 'Perfil', to: '/auth/perfil' },
   { name: 'Loguéate', to: '/auth/signin' },
-  { name: 'Registrarse', to: '/auth/signup' }
+  { name: 'Registrarse', to: '/auth/signin' }
 ]
 
 const navLinks = (page) => <LinkRouter className='NavBar-Links br3 xpad-5' to={page.to} key={page.name}>{page.name}</LinkRouter>
