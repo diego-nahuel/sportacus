@@ -8,19 +8,23 @@
     flex-flow: column;
 }
 
-.Info {
-    width: 100%;
-}
-
 .Mensaje {
-    height: 125px;
+    min-height: 125px;
 }
 
+@media (max-width: 939px) {
+    .Info {
+        width: 100%;
+        align-items: center;
+    }
+}
 
-@media (min-width: 768px) {
+@media (min-width: 940px) {
     .Columna-Contacto {
         flex-flow: row;
+        width: 100%;
     }
+
     .Info {
         width: 50%;
     }
