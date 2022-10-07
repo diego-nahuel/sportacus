@@ -593,8 +593,8 @@
 }
 
 /*--------------------------------------------*/
-.xdivider {
-  border-top: 3px solid whitesmoke;
+.xdivider-light {
+  border-top: 2px solid whitesmoke;
 }
 
 .xdivider-dark {
