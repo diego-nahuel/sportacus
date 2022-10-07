@@ -1,4 +1,6 @@
-import React from 'react'
+import axios from 'axios'
+import {React, useEffect, useRef, useState} from 'react'
+import apiUrl from '../API'
 
 const fields = [
   { name: 'Sport1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Sport 1', sport:'1' },
@@ -27,6 +29,26 @@ const sportSelect = (field) =>
   <option>{field.sport}</option>
 
 export default function Canchas() {
+
+  const fieldCard = (field)=>
+  <div>
+    <h2>{field.name}</h2>
+    <img alt={field.name} src={field.image}/>
+    <p>{field.city}</p>
+  </div>
+
+const [canchas, setCanchas]=useState([])
+const [search, setSearch] =useState('')
+const searchInput = useRef('')
+const accion =() => {
+  setSearch(searchInput.current.value)
+}
+useEffect(()=>{
+  axios.get(apiUrl+'/fields?name='+search)
+      .then(response => setCanchas(response.data.response))
+  }, [])
+  console.log(canchas)
+
   return (
     <>
       <main className='main-bg main-height text-light justify-center'>
@@ -42,7 +64,7 @@ export default function Canchas() {
             </select>
           </div>
           <div className='card-container justify-center gap-30'>
-            {fields.map(fieldList)}
+          {canchas.map(fieldCard)}
           </div>
         </div>
       </main>
