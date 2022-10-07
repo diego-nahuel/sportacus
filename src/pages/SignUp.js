@@ -7,35 +7,36 @@ import { useSingUpMutation } from '../features/authAPI'
 export default function SignUp() {
 
   const formSignUp = [
-    { name: 'text', type: 'name', placeholder: 'Nombre' },
-    { name: 'url', type: 'photo', placeholder: 'Avatar' },
-    { name: 'email', type: 'mail', placeholder: 'Email' },
-    { name: 'text', type: 'password', placeholder: 'Contraseña' },
+    { name: 'name', type: 'text', placeholder: 'Nombre' },
+    { name: 'photo', type: 'url', placeholder: 'Avatar' },
+    { name: 'mail', type: 'email', placeholder: 'Email' },
+    { name: 'password', type: 'password', placeholder: 'Contraseña' },
   ]
   const [user, setUser] = useState({
     name: "", photo: "", mail: "", password: "", role: "user", from: "form"
   })
-  const userForm = (input) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder}  onChange={handleInput} />
+  const userForm = (input,index) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} key={index} onChange={handleInput} />
 
   const handleInput = e => {
     setUser({
-        ...user, [e.target.name]: e.target.value
+      ...user, [e.target.name]: e.target.value
     })
-}
+  }
   const [signUp] = useSingUpMutation()
   let Navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let {data, error} = await signUp(user)
-    if(error){
-        // Alerta
+    let { data, error } = await signUp(user)
+    if (error) {
+      // Alerta
+      console.log(error);
     } else if (!data.success) {
-        // Alerta
+      // Alerta
     }
     else {
-        //Alerta
-        Navigate("/");
+      //Alerta
+      Navigate("/");
     }
   }
 
