@@ -1,0 +1,94 @@
+.Card {
+    width: 310px;
+    max-height: 450px;
+}
+
+.IMG-Card {
+    width: 100%;
+    height: 275px;
+    object-fit: cover;
+}
+
+.Card-Button {
+    border-radius: 3px 0 3px 0;
+    background-color: aqua;
+}
+
+.submit-button {
+    border: none;
+    background-color: aqua;
+    padding: 5px 10px;
+    transition: ease-in-out 0.25s;
+}
+
+.submit-button:hover {
+    background-color: rgb(0, 150, 255);
+}
+
+.button-check {
+    transition: ease-in-out 0.25s;
+    background: none;
+    color: whitesmoke;
+    border: none;
+    border-radius: 3px;
+}
+
+.button-check:hover {
+    background-color: #178bff;
+}
+
+.FilterSort {
+    display: flex;
+    flex-flow: column;
+}
+
+.Select {
+    width: 100%;
+    max-height: 30px;
+    border: none;
+    border-radius: 0 0 3px 3px;
+
+}
+
+.Checkboxes {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .FilterSort {
+        flex-flow: row;
+    }
+
+    .Select {
+        width: 25%;
+        border: none;
+        border-radius: 0 3px 3px 0;
+    }
+
+    .Checkboxes {
+        display: flex;
+        flex-flow: row wrap;
+        width: 75%;
+        gap: 10px;
+    }
+
+    .Hide-Checkbox-Desktop {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .Hide-Checkbox-Mobile {
+        display: none;
+    }
+    .Checkbox-Responsive-Divider {
+        border-top: 2px solid rgb(0, 150, 255, 0.5);
+        /* border-top: 2px solid rgb(245, 245, 245, 0.25); */
+        border-radius: 0;
+    }
+    .button-check:hover {
+        background: none;
+    }
+}
