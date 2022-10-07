@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Alert from '../components/Alert'
 import { useSingUpMutation } from '../features/authAPI'
 // import { ToastContainer, toast } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
@@ -29,13 +30,13 @@ export default function SignUp() {
     e.preventDefault()
     let { data, error } = await signUp(user)
     if (error) {
-      // Alerta
+      Alert("error", error.data.message)
       console.log(error);
     } else if (!data.success) {
-      // Alerta
+      Alert("error",data.message);
     }
     else {
-      //Alerta
+      Alert("success",data.message);
       Navigate("/");
     }
   }
