@@ -12,10 +12,17 @@ export default function SignUp() {
     { name: 'mail', type: 'email', placeholder: 'Email' },
     { name: 'password', type: 'password', placeholder: 'Contraseña' },
   ]
+
   const [user, setUser] = useState({
-    name: "", photo: "", mail: "", password: "", role: "user", from: "form"
+    name: "",
+    photo: "",
+    mail: "",
+    password: "",
+    role: "user",
+    from: "form"
   })
-  const userForm = (input,index) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} key={index} onChange={handleInput} />
+
+  const userForm = (input, index) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} key={index} onChange={handleInput} />
 
   const handleInput = e => {
     setUser({
