@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import apiUrl from "../API";
 
-const fieldsAPI =  createApi({
+export const fieldsAPI =  createApi({
     reducerPath: 'fieldsAPI',
 
     baseQuery: fetchBaseQuery({
@@ -9,7 +9,7 @@ const fieldsAPI =  createApi({
     }),
     endpoints: (builder) => ({
         allFields: builder.query({
-            query: (inputFields) => `/fields=${inputFields}`
+            query: (inputFields) => `/fields?name=${inputFields}`
         }),
         allFieldsUser: builder.query({
             query: (id) => `/fields?user=${id}`
@@ -46,5 +46,4 @@ const fieldsAPI =  createApi({
         }),
     })
 });
-export default fieldsAPI;
 export const {useOneFieldsQuery, useAllFieldsQuery, useAllFieldsUserQuery, useNewFieldsMutation, useUpdateFieldsMutation, useDeleteFieldsMutation, useLikeDislikeMutation} = fieldsAPI;
