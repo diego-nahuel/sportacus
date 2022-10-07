@@ -37,27 +37,29 @@ export default function SignIn() {
     <>
       <main className='main-bg main-height justify-end'>
         <div className="bg main-height blur container-width ypad-15 col align-center gap-30">
-        <button className='Form-Container form-padding br3 col align-center bg-dark' onClick={handleOpenSignIn}>
-          <h3 className='text-light'>Entra a tu cuenta</h3>
-          { openSignIn ?
+        {/* <button className='Form-Container form-padding br3 col align-center bg-dark' onClick={handleOpenSignIn}> */}
+          {/* <h3 className='text-light'>Entra a tu cuenta</h3> */}
+          {/* { openSignIn ? */}
             <form className='Form-Container w50 bg-dark pad-15 form-width br3 gap-15 col'>
+            <h3 className='text-light'>Entra a tu cuenta</h3>
               {formSignIn.map(userForm)}
               <button className='br3 form-padding submit-button' /* onClick={handleSubmit} */>Iniciar Sesión</button>
               {/* <SignInGoogle /> */}
-            </form> : null}
-            </button>
+              </form> {/* : null} */}
+            {/* </button> */}
 
           <div className='xdivider-light transparent-75 Form-Container'></div>
           
-          <button className='Form-Container form-padding br3 col align-center bg-dark' onClick={handleOpenSignUp}>
-          <h3 className='text-light'>Crea una cuenta</h3>
-            { openSignUp ?
+          {/* <button className='Form-Container form-padding br3 col align-center bg-dark' onClick={handleOpenSignUp}> */}
+          {/* <h3 className='text-light'>Crea una cuenta</h3> */}
+            {/* { openSignUp ? */}
             <form className='Form-Container w50 bg-dark pad-15 form-width br3 gap-15 col'>
+          <h3 className='text-light'>Crea una cuenta</h3>
               {formSignUp.map(userForm)}
               <button className='br3 form-padding submit-button' /* onClick={handleSubmit} */>Registrarse</button>
               {/* <SignUpGoogle /> */}
-            </form> : null}
-          </button>
+            </form> {/* : null} */}
+          {/* </button> */}
         </div>
       </main>
     </>
