@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSingUpMutation } from '../features/authAPI'
 // import { ToastContainer, toast } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
+import SignUpGoogle from '../components/SignUpGoogle'
 
 export default function SignUp() {
 
@@ -44,9 +45,9 @@ export default function SignUp() {
       <main className='main-bg main-height justify-end'>
         <div className="bg blur w50 text-light justify-center ypad-15">
           <form className='form-width gap-15 col' onSubmit={handleSubmit}>
+            <SignUpGoogle />
             {formSignUp.map(userForm)}
             <button className='br3 form-padding submit-button ymar-30' type='submit'>Registrarse</button>
-            {/* <SignUpGoogle /> */}
           </form>
         </div>
       </main>
