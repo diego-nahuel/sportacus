@@ -2,6 +2,7 @@ import axios from 'axios'
 import '../styles/Components.css'
 import {React, useEffect, useRef, useState} from 'react'
 import apiUrl from '../API'
+import {Link as LinkRouter} from 'react-router-dom'
 
 const fields = [
   { name: 'Sport1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Sport 1', sport:'1' },
@@ -18,7 +19,9 @@ const fieldList = (field) =>
     <div className='xdivider-light transparent-25 ymar-10'></div>
     <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${field.price}</p>
-          <button className='Card-Button submit-button br-none w50 text-dark form-padding'>Ver Mas...</button>
+          <LinkRouter to={field._id} key={field.name} className='Card-Button submit-button br-none w50 text-dark form-padding'>
+          Ver mas...
+          </LinkRouter>
         </div>
   </div>
 

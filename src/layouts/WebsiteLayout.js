@@ -13,7 +13,7 @@ import Contacto from '../pages/Contacto';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop';
 import Comunidad from '../pages/Comunidad';
-
+import FieldsDetails from '../pages/FieldsDetails';
 
 export default function WebsiteLayout() {
     return (
@@ -32,6 +32,7 @@ export default function WebsiteLayout() {
                     <Route path='/auth/perfil' element={<Perfil />} />
                     <Route path='/auth/signin' element={<SignIn />} />
                     <Route path='/auth/signup' element={<SignUp />} />
+                    <Route path='/canchas/:id' element={<FieldsDetails />}/>
                 </Routes>
                 <Footer />
             </BrowserRouter>
