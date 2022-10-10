@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as jose from 'jose'
 import { useSignUpMutation } from '../../features/authAPI'
+import axios from 'axios'
+import urlAPI from '../../API'
 
 export default function SignUpGoogle() {
     const buttonDiv = useRef(null)
@@ -9,15 +11,20 @@ export default function SignUpGoogle() {
     async function handleCredentialsResponse(response) {
         let userObject = jose.decodeJwt(response.credential)
         let data = {
-            name: userObject.name,
-            photo: userObject.photo,
-            mail: userObject.mail,
-            password: userObject.password,
+            name: userObject.given_name,
+            photo: userObject.picture,
+            mail: userObject.email,
+            password: userObject.sub,
             role: 'user',
             from: 'google'
         }
-        newUser(data)
-        console.log(newUser)
+        // newUser(data)
+        // console.log(newUser)
+        try {
+            await axios.post(urlAPI + '/users/signup', data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
