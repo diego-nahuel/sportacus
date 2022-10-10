@@ -5,14 +5,14 @@ import '../styles/Header.css';
 import Swal from 'sweetalert2';
 import { useSignInMutation, useSignOutMutation } from '../features/authAPI';
 import { addUser, removeUser } from '../features/userSlice';
-import ModalSignIn from './ModalSignIn'
-import ModalSignUp from './ModalSignUp'
+import ModalSignIn from './UserMenu/ModalSignIn'
+import ModalSignUp from './UserMenu/ModalSignUp'
 
 
 function UserMenu() {
     const userRedux = useSelector(state => state.user.u);
     const dispatch = useDispatch();
-    const [signIn] = useSignInMutation()
+    // const [signIn] = useSignInMutation()
     const [signOut] = useSignOutMutation()
     let Navigate = useNavigate()
     const [open, setOpen] = useState(false)
@@ -149,7 +149,7 @@ function UserMenu() {
                                     <p className='Links'>Entrar</p>
                                 </li>
                                 <span className='decoration' onClick={handleModalSignUp}>
-                                    <DropdownIttem img={'https://cdn-icons-png.flaticon.com/512/1001/1001371.png'} to={'/auth/signup'} text={"Registrarse"} />
+                                    <DropdownIttem img={'https://cdn-icons-png.flaticon.com/512/1001/1001371.png'} text={"Registrarse"} />
                                 </span>
                             </ul>
                         </>
