@@ -7,7 +7,7 @@ export const authAPI = createApi({
         baseUrl: apiUrl
     }),
     endpoints: (builder) => ({
-        singUp: builder.mutation({
+        signUp: builder.mutation({
             query: (user) => ({
                 url: `/users/signup`,
                 method: 'POST',
@@ -38,4 +38,4 @@ export const authAPI = createApi({
     })
 })
 
-export const {useSingUpMutation, useSignInMutation, useSignOutMutation, useLazyVerifyTokenQuery} = authAPI
+export const {useSignUpMutation, useSignInMutation, useSignOutMutation, useLazyVerifyTokenQuery} = authAPI
