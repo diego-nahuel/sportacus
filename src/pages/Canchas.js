@@ -58,7 +58,6 @@ useEffect(()=>{
       .then(response => {setCanchas(response.data)},
       )
   },[canchas])
-  console.log(canchas)
 
 // let {data:canchas,isLoading,isSuccess } = useAllFieldsQuery(search)
 // if (isLoading) {
@@ -75,7 +74,7 @@ useEffect(()=>{
             <div className='justify-start gap-15'>
             {fields.map(sportCheck)}
             </div>
-            <input type="search" ref={searchInput} onChange={accion}></input>
+            <input type="search" ref={searchInput} onChange={accion} placeholder="Buscar cancha..."></input>
             <select className='w25 br3 form-padding'>
               <option></option>
               {fields.map(sportSelect)}
