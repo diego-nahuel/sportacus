@@ -4,7 +4,7 @@ import { addUser } from '../../features/userSlice';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import Alert from '../Alert';
-import SignInGoogle from './SingInGoogle';
+import SignInGoogle from './SignInGoogle';
 import '../../styles/UserForm.css';
 
 export default function ModalSignIn() {
