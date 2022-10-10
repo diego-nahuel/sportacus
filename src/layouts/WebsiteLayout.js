@@ -5,8 +5,6 @@ import Footer from '../components/Footer';
 import HeaderBar from '../components/HeaderBar';
 import UnderConstruction from '../pages/UnderConstruction';
 import Productos from '../pages/Productos';
-import SignUp from '../pages/SignUp';
-import SignIn from '../pages/SignIn';
 import Perfil from '../pages/Perfil';
 import Canchas from '../pages/Canchas';
 import Contacto from '../pages/Contacto';
@@ -30,8 +28,6 @@ export default function WebsiteLayout() {
                     <Route path='/contacto' element={<Contacto />} />
                     <Route path='/comunidad' element={<Comunidad />} />
                     <Route path='/auth/perfil' element={<Perfil />} />
-                    <Route path='/auth/signin' element={<SignIn />} />
-                    <Route path='/auth/signup' element={<SignUp />} />
                     <Route path='/canchas/:id' element={<FieldsDetails />}/>
                 </Routes>
                 <Footer />
