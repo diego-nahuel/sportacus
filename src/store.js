@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/userSlice";
 import { authAPI } from "./features/authAPI";
 import { productsApi} from "./features/productsApi";
-import {fieldsAPI} from "./features/fieldsAPI";
+import {fieldsApi} from "./features/fieldsApi";
 
 export default configureStore ({
     reducer: {
@@ -12,11 +12,17 @@ export default configureStore ({
         products: productsApi,
         [productsApi.reducerPath]: productsApi.reducer,
 
-        fields: fieldsAPI,
-        [fieldsAPI.reducer]:fieldsAPI.reducer
-
+        fields: fieldsApi,
+        [fieldsApi.reducer]:fieldsApi.reducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        inmutableCheck: false,
+        serializableCheck: false,
+        productsApi: true,
+        fieldsApi:true
+    })
     .concat(authAPI.middleware)
     .concat(productsApi.middleware)
+    .concat(fieldsApi.middleware)
 })

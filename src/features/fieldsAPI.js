@@ -1,8 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import apiUrl from "../API";
 
-export const fieldsAPI =  createApi({
-    reducerPath: 'fieldsAPI',
+export const fieldsApi =  createApi({
+    reducerPath: 'fieldsApi',
 
     baseQuery: fetchBaseQuery({
         baseUrl: apiUrl
@@ -46,4 +46,4 @@ export const fieldsAPI =  createApi({
         }),
     })
 });
-export const {useOneFieldsQuery, useAllFieldsQuery, useAllFieldsUserQuery, useNewFieldsMutation, useUpdateFieldsMutation, useDeleteFieldsMutation, useLikeDislikeMutation} = fieldsAPI;
+export const {useOneFieldsQuery, useAllFieldsQuery, useAllFieldsUserQuery, useNewFieldsMutation, useUpdateFieldsMutation, useDeleteFieldsMutation, useLikeDislikeMutation} = fieldsApi;
