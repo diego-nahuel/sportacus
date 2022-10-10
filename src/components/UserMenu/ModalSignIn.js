@@ -1,10 +1,11 @@
-import { useSignInMutation } from '../features/authAPI';
+import { useSignInMutation } from '../../features/authAPI';
 import React, { useState } from 'react';
-import { addUser } from '../features/userSlice';
+import { addUser } from '../../features/userSlice';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import Alert from '../components/Alert';
-import '../styles/UserForm.css';
+import Alert from '../Alert';
+import SignInGoogle from './SignInGoogle';
+import '../../styles/UserForm.css';
 
 export default function ModalSignIn() {
     const dispatch = useDispatch();
@@ -39,29 +40,33 @@ export default function ModalSignIn() {
     };
 
     /*  */
-    const [closeModal, setCloseModal] = useState(true)
+    const [closeModal, setCloseModal] = useState(true);
     const handleCloseModal = () => {
         if (closeModal == false) {
             setCloseModal(true)
         } else {
             setCloseModal(false)
         }
-    }
+    };
+
+    const modalStopPropagation = event => {
+        event.stopPropagation();
+    };
     /*  */
 
     return (
         <>
             {closeModal ?
-                <div className='Modal-User w100 flex-center'>
-                    <div className='Form-Container w50 bg-dark pad-15 form-width br3 gap-10 col'>
-                        <div className='row space-between text-light'>
-                            <h3>Inicia Sesión</h3>
-                            <span className='Close-Button' onClick={handleCloseModal}>X</span>
-                        </div>
+                <div className='Modal-User w100 flex-center' onClick={handleCloseModal}>
+                    <div className='Form-Container w50 bg-dark pad-15 form-width br3 gap-10 col' onClick={modalStopPropagation}>
+                            <h3 className='text-light'>Inicia Sesión</h3>
                         <form className='br3 gap-15 col' onSubmit={handleSubmit}>
                             {formSignIn.map(userForm)}
-                            <button className='br3 form-padding submit-button' type='submit'>Iniciar Sesión</button>
-                            {/* <SignInGoogle /> */}
+                            <div className='User-Button-Container'>
+                                <button className='User-Button br3 form-padding submit-button' type='submit'>Iniciar Sesión</button>
+                                <SignInGoogle />
+                            </div>
+
                         </form>
                     </div>
                 </div> : null}

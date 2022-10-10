@@ -1,12 +1,12 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as jose from 'jose'
-import {useSingUpMutation} from '../features/authAPI'
+import { useSignUpMutation } from '../../features/authAPI'
 
-export default function SignUpGoogle(){
+export default function SignUpGoogle() {
     const buttonDiv = useRef(null)
-    let [newUser, {data: resSignUp, error}] = useSingUpMutation()
+    let [newUser, { data: resSignUp, error }] = useSignUpMutation()
 
-    async function handleCredentialsResponse(response){
+    async function handleCredentialsResponse(response) {
         let userObject = jose.decodeJwt(response.credential)
         let data = {
             name: userObject.name,
@@ -29,13 +29,13 @@ export default function SignUpGoogle(){
         });
         google.accounts.id.renderButton(
             buttonDiv.current,
-            {theme: "outline", size: "medium", text: "signup_with"}
+            { theme: "outline", size: "medium", text: "signup_with" }
         );
     }, [])
 
-    return(
-        <div>
-            <div ref={buttonDiv}></div>
-        </div>
+    return (
+        <>
+            <div className="justify-center" ref={buttonDiv}></div>
+        </>
     )
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Alert from '../components/Alert'
-import { useSingUpMutation } from '../features/authAPI'
+import Alert from '../Alert';
+import { useSignUpMutation } from '../../features/authAPI'
+import SignUpGoogle from './SignUpGoogle'
 // import { ToastContainer, toast } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
 
@@ -30,7 +31,7 @@ export default function SignUp() {
       ...user, [e.target.name]: e.target.value
     })
   }
-  const [signUp] = useSingUpMutation()
+  const [signUp] = useSignUpMutation()
   let Navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -40,41 +41,44 @@ export default function SignUp() {
       Alert("error", error.data.message)
       console.log(error);
     } else if (!data.success) {
-      Alert("error",data.message);
+      Alert("error", data.message);
     }
     else {
-      Alert("success",data.message);
+      Alert("success", data.message);
       Navigate("/");
     }
-  }
+  };
 
-/*  */
-const [closeModal, setCloseModal] = useState(true)
-const handleCloseModal = () => {
+  /*  */
+  const [closeModal, setCloseModal] = useState(true);
+  const handleCloseModal = () => {
     if (closeModal == false) {
-        setCloseModal(true)
+      setCloseModal(true)
     } else {
-        setCloseModal(false)
+      setCloseModal(false)
     }
-}
-/*  */
+  };
+
+  const modalStopPropagation = event => {
+    event.stopPropagation();
+  };
+  /*  */
 
   return (
     <>
-    {closeModal ?
-        <div className='Modal-User w100 flex-center'>
-            <div className='Form-Container w50 bg-dark pad-15 form-width br3 gap-10 col'>
-                <div className='row space-between text-light'>
-                    <h3>Crea una cuenta</h3>
-                    <span className='Close-Button' onClick={handleCloseModal}>X</span>
-                </div>
-                <form className='br3 gap-15 col' onSubmit={handleSubmit}>
-                    {formSignUp.map(userForm)}
-                    <button className='br3 form-padding submit-button' type='submit'>Registrarse</button>
-                    {/* <SignInGoogle /> */}
-                </form>
-            </div>
+      {closeModal ?
+        <div className='Modal-User w100 flex-center' onClick={handleCloseModal}>
+          <div className='Form-Container w50 bg-dark pad-15 form-width br3 gap-10 col' onClick={modalStopPropagation}>
+              <h3 className='text-light'>Crea una cuenta</h3>
+            <form className='br3 gap-15 col' onSubmit={handleSubmit}>
+              {formSignUp.map(userForm)}
+              <div className='User-Button-Container'>
+                <button className='User-Button br3 form-padding submit-button' type='submit'>Registrarse</button>
+                <SignUpGoogle />
+              </div>
+            </form>
+          </div>
         </div> : null}
-</>
+    </>
   )
 }

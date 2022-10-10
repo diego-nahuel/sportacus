@@ -38,6 +38,17 @@
     backdrop-filter: blur(2px);
 }
 
+.User-Button-Container {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.User-Button {
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .Profile-Divider {
         display: none;
@@ -55,10 +66,12 @@
         max-width: 475px;
         width: 50%;
     }
+
     .Form-Container {
         min-width: 400px;
         width: 50%;
     }
+
     .Profile-Divider {
         border-left: 2px solid whitesmoke;
         border-radius: 3px;
@@ -66,5 +79,18 @@
         max-width: 0;
         min-height: 200px;
         max-height: 300px;
-      }
+    }
+
+}
+
+@media (min-width: 426px) {
+    .User-Button-Container {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+    .User-Button {
+        width: 50%;
+    }
 }
