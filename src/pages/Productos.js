@@ -38,6 +38,13 @@ const searching = ()=>(
 
         <div className='xdivider-light transparent-25 ymar-10'></div>
 
+        <ul className='list-style-none xpad-10 h25 row space-between'>
+          <li>Deporte: {product.sport}</li>
+          <li>Stock: {product.stock}</li>
+        </ul>
+
+        <div className='xdivider-light transparent-25 ymar-10'></div>
+
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${product.price}</p>
           <button className='Card-Button submit-button br-none w50 text-dark form-padding'>Comprar</button>
