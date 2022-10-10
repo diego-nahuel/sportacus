@@ -1,4 +1,5 @@
 import axios from 'axios'
+import '../styles/Components.css'
 import {React, useEffect, useRef, useState} from 'react'
 import apiUrl from '../API'
 
@@ -10,11 +11,15 @@ const fields = [
 ]
 
 const fieldList = (field) =>
-  <div className='Card'>
-    <h4>{field.name}</h4>
-    <img className='IMG-Card' src={field.photo} />
-    <p>{field.description}</p>
-    <p>{field.sport}</p>
+  <div className='Card bg-dark br3'>
+    <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{field.name}</h4>
+    <img className='IMG-Card' src={field.image} />
+    <p>{field.city}</p>
+    <div className='xdivider-light transparent-25 ymar-10'></div>
+    <div className='space-between w100'>
+          <p className='xpad-10 align-center'>Precio: ${field.price}</p>
+          <button className='Card-Button submit-button br-none w50 text-dark form-padding'>Ver Mas...</button>
+        </div>
   </div>
 
 const sportCheck = (field) =>
@@ -40,14 +45,15 @@ export default function Canchas() {
 const [canchas, setCanchas]=useState([])
 const [search, setSearch] =useState('')
 const searchInput = useRef('')
-const accion =() => {
-  setSearch(searchInput.current.value)
-}
+const accion =() => (
+  setSearch(searchInput.current.value),
+  console.log(search)
+)
 useEffect(()=>{
   axios.get(apiUrl+'/fields?name='+search)
       .then(response => setCanchas(response.data.response))
   }, [])
-  console.log(canchas)
+
 
   return (
     <>
@@ -58,13 +64,14 @@ useEffect(()=>{
             <div className='justify-start gap-15'>
             {fields.map(sportCheck)}
             </div>
+            <input type="search" ref={searchInput} onChange={accion}></input>
             <select className='w25 br3 form-padding'>
               <option></option>
               {fields.map(sportSelect)}
             </select>
           </div>
           <div className='card-container justify-center gap-30'>
-          {canchas.map(fieldCard)}
+          {canchas.map(fieldList)}
           </div>
         </div>
       </main>
