@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useOneFieldsQuery } from "../features/fieldsAPI";
 import axios from "axios";
 import apiUrl from "../API";
 import { useState, useEffect } from "react";
