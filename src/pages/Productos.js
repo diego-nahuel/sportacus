@@ -1,5 +1,5 @@
 import '../styles/Components.css'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useGetAllQuery } from '../features/productsApi'
 
 const sports = [
@@ -12,7 +12,13 @@ const sports = [
 ]
 
 export default function Productos() {
-  let { data: petition, isLoading, isSuccess } = useGetAllQuery('')
+let [search, setSearch] = useState('')
+const busqueda=useRef()
+const searching = ()=>(
+  setSearch(busqueda.current.value),
+  console.log(search)
+)
+  let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
   if (isLoading) {
     petition = []
   } else if (isSuccess) {
@@ -20,7 +26,7 @@ export default function Productos() {
   }
   let allProducts
   petition.response ? allProducts = petition.response : allProducts = petition
-
+  
   //  console.log(allProducts)
 
   const productList = (product) =>
@@ -95,7 +101,7 @@ export default function Productos() {
               </div>
               {sports.map(sportCheckDesktop)}
             </div>
-
+            <input type="search" ref={busqueda} placeholder="Busque un producto..." onChange={searching}></input>
             <select className='Select form-padding bg-light flex-end'>
               <option></option>
               {sports.map(sportSelect)}
