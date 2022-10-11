@@ -12,12 +12,12 @@ const sports = [
 ]
 
 export default function Productos() {
-let [search, setSearch] = useState('')
-const busqueda=useRef()
-const searching = ()=>(
-  setSearch(busqueda.current.value),
-  console.log(search)
-)
+  let [search, setSearch] = useState('')
+  const busqueda = useRef()
+  const searching = () => (
+    setSearch(busqueda.current.value),
+    console.log(search)
+  )
   let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
   if (isLoading) {
     petition = []
@@ -26,7 +26,7 @@ const searching = ()=>(
   }
   let allProducts
   petition.response ? allProducts = petition.response : allProducts = petition
-  
+
   //  console.log(allProducts)
 
   const productList = (product) =>
@@ -47,7 +47,7 @@ const searching = ()=>(
 
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${product.price}</p>
-          <button className='Card-Button submit-button br-none w50 text-dark form-padding'>Comprar</button>
+          <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'>Comprar</button>
         </div>
       </div>
     </>
@@ -92,7 +92,11 @@ const searching = ()=>(
     <>
       <main className='main-bg main-height text-light justify-center'>
         <div className='container-width bg blur col gap-15 pad-10'>
-          <h3>Productos</h3>
+          <div className='col-row-768 gap-5 space-between'>
+            <h3>Productos</h3>
+            <input className='Search-Input br3 form-padding bg-light align-end' type="search" ref={busqueda} placeholder="Busque un producto..." onChange={searching}></input>
+          </div>
+
           <div className='FilterSort bg-dark br3 space-between w100'>
             <div className='Checkboxes justify-start'>
 
@@ -108,7 +112,6 @@ const searching = ()=>(
               </div>
               {sports.map(sportCheckDesktop)}
             </div>
-            <input type="search" ref={busqueda} placeholder="Busque un producto..." onChange={searching}></input>
             <select className='Select form-padding bg-light flex-end'>
               <option></option>
               {sports.map(sportSelect)}
