@@ -75,7 +75,7 @@ export default function Productos() {
       <main className='main-bg main-height text-light justify-center'>
         <div className='container-width bg blur col gap-15 pad-10'>
           <div className='col-row-768 gap-5 space-between'>
-            <h3>Productos</h3>
+            <h2>Productos</h2>
             <input className='Search-Input br3 form-padding bg-light align-end' type="search" ref={searchInput} placeholder="Busque un producto..." onChange={searching}></input>
           </div>
 
