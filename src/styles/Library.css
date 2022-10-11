@@ -66,6 +66,18 @@
   font-size: x-large;
 }
 
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
 /*--------------------------------------------*/
 .transparent-25 {
   filter: alpha(opacity=25);
@@ -114,6 +126,7 @@
 .list-style-none {
   list-style: none
 }
+
 /*--------------------------------------------*/
 .row {
   display: flex;
@@ -133,6 +146,26 @@
 .col-reverse {
   display: flex;
   flex-flow: column-reverse;
+}
+
+.row-col-768 {
+  display: flex;
+  flex-flow: row;
+}
+
+.col-row-768 {
+  display: flex;
+  flex-flow: column;
+}
+
+@media (min-width: 769px) {
+  .row-col-768 {
+    flex-flow: column;
+  }
+
+  .col-row-768 {
+    flex-flow: row;
+  }
 }
 
 /*--------------------------------------------*/
