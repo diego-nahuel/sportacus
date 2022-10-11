@@ -19,13 +19,13 @@ export default function Productos() {
     petition = petition
   }
   let allProducts
-  petition.response ? allProducts = petition.response : allProducts = petition
+  petition?.response ? allProducts = petition.response : allProducts = petition
 
   //  console.log(allProducts)
 
   const productList = (product) =>
     <>
-      <div className='Card bg-dark br3'>
+      <div className='Card bg-dark br3' key={product.name}>
         <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{product.name}</h4>
         <img className='IMG-Card' src={product.image} />
         <p className='xpad-10 h75 overflow-hidden font-n w-normal'>{product.description}</p>
@@ -103,7 +103,7 @@ export default function Productos() {
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {allProducts.map(productList)}
+            {allProducts?.map(productList)}
           </div>
 
         </div>
