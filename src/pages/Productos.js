@@ -28,7 +28,7 @@ export default function Productos() {
     petition = petition
   }
   let allProducts
-  petition.response ? allProducts = petition.response : allProducts = petition
+  petition?.response ? allProducts = petition.response : allProducts = petition
 
   //  console.log(allProducts)
 
@@ -103,7 +103,7 @@ export default function Productos() {
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {allProducts.map(productList)}
+            {allProducts?.map(productList)}
           </div>
 
         </div>
