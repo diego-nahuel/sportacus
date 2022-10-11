@@ -17,7 +17,7 @@ export const productsApi = createApi({
             })
         }),
         getAll: builder.query({
-            query:(search)=>`/products?name=${search}`
+            query:(search)=>`/products/?name=${search}`
         }),
         getOne: builder.query({
             query:(id)=>`/products/${id}`
