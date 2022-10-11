@@ -4,5 +4,6 @@ const pages = [
     { name: 'Canchas', to: '/canchas' },
     { name: 'Comunidad', to: '/comunidad' },
     { name: 'Contacto', to: '/contacto' },
+    { name:"Agregar Cancha", to:'/nuevacancha'},
 ]
 export default pages;
