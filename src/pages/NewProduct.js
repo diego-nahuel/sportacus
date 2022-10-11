@@ -3,43 +3,48 @@ import apiUrl from "../API";
 import { useCreateMutation } from "../features/productsApi";
 import '../styles/NewField.css'
 
-export default function NewProduct(){
+export default function NewProduct() {
     const [sendProduct] = useCreateMutation()
-    const name=useRef()
-    const price=useRef()
-    const image=useRef()
-    const description=useRef()
+    const name = useRef()
+    const sport = useRef()
+    const type = useRef()
+    const price = useRef()
+    const stock = useRef()
+    const image = useRef()
+    const description = useRef()
 
-const enviar = (e)=>{
-    e.preventDefault()
-    let product = {
-        name: name.current.value,
-        price:price.current.value,
-        image:image.current.value,
-        description:description.current.value,
+    const sendNewProduct = (e) => {
+        e.preventDefault()
+        let product = {
+            name: name.current.value,
+            sport: sport.current.value,
+            type: type.current.value,
+            price: price.current.value,
+            stock: stock.current.value,
+            image: image.current.value,
+            description: description.current.value,
 
+        }
+        sendProduct(product)
     }
-    sendProduct(product)
-}    
 
-    return(
+    return (
         <>
-        <h1>Nueva Cancha</h1>
-        <form className='form'>
-            <label to='name' className="label">Nombre
-                <input type='text' name='name' placeholder="Inserte el nombre del producto" className="input" ref={name}/> 
-            </label>
-            <label to='price' className="label">Precio
-                <input type='text' name='price' placeholder="Inserte el precio del producto" className="input" ref={price}/> 
-            </label>
-            <label to='image' className="label">Imagen
-                <input type='text' name='image' placeholder="Inserte el link de la imagen del producto" className="input" ref={image}/> 
-            </label>
-            <label to='description' className="label">Descripcion
-                <input type='text' name='description' placeholder="Inserte la descripcion del producto" className="input" ref={description}/> 
-            </label>
-            <button type="send" onClick={enviar}>Enviar</button>
-        </form>
+            <main className="main-bg justify-center">
+                <div className="container-width col align-center bg blur main-height text-light xpad-10 ypad-5">
+                    <h2>Nuevo Producto</h2>
+                        <form className='Form-Container flex-center bg-dark align-end gap-15 col br3 pad-15'>
+                            <input className="w100 br3 bg-light form-padding" type='text' name='name' placeholder="Nombre del producto" ref={name} />
+                            <input className="w100 br3 bg-light form-padding" type='text' name='sport' placeholder="Deporte del producto" ref={sport} />
+                            <input className="w100 br3 bg-light form-padding" type='text' name='type' placeholder="Tipo de producto" ref={type} />
+                            <input className="w100 br3 bg-light form-padding" type='number' name='price' placeholder="Precio del producto" ref={price} />
+                            <input className="w100 br3 bg-light form-padding" type='number' name='stock' placeholder="Stock del producto" ref={stock} />
+                            <input type='url' name='image' placeholder="Link de la imagen del producto" className="w100 br3 bg-light form-padding" ref={image} />
+                            <textarea type='text' name='description' placeholder="Descripcion del producto" className="br3 bg-light form-padding min-h100 max-h250 min-w100 max-w100" ref={description} />
+                            <button className="submit-button br3 w100" type="send" onClick={sendNewProduct}>Enviar</button>
+                        </form>
+                </div>
+            </main>
         </>
     )
 }
