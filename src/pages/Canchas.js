@@ -47,8 +47,8 @@ useEffect(()=>{
   axios.get(apiUrl+'/fields?name='+search)
       .then(response => setCanchas(response.data.response))
   }, [])
-  console.log(canchas)
 
+  
   return (
     <>
       <main className='main-bg main-height text-light justify-center'>
