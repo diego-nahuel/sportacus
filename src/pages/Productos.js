@@ -16,9 +16,9 @@ const sports = [
 
 export default function Productos() {
   let [search, setSearch] = useState('')
-  const busqueda = useRef()
+  const searchInput = useRef()
   const searching = () => (
-    setSearch(busqueda.current.value),
+    setSearch(searchInput.current.value),
     console.log(search)
   )
   let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
@@ -76,7 +76,7 @@ export default function Productos() {
         <div className='container-width bg blur col gap-15 pad-10'>
           <div className='col-row-768 gap-5 space-between'>
             <h3>Productos</h3>
-            <input className='Search-Input br3 form-padding bg-light align-end' type="search" ref={busqueda} placeholder="Busque un producto..." onChange={searching}></input>
+            <input className='Search-Input br3 form-padding bg-light align-end' type="search" ref={searchInput} placeholder="Busque un producto..." onChange={searching}></input>
           </div>
 
           <div className='FilterSort bg-dark br3 space-between w100'>
