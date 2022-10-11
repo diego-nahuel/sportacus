@@ -13,6 +13,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import Comunidad from '../pages/Comunidad';
 import FieldsDetails from '../pages/FieldsDetails';
 import NewField from '../pages/NewField';
+import NewProduct from '../pages/NewProduct';
 
 export default function WebsiteLayout() {
     return (
@@ -31,6 +32,7 @@ export default function WebsiteLayout() {
                     <Route path='/auth/perfil' element={<Perfil />} />
                     <Route path='/canchas/:id' element={<FieldsDetails />}/>
                     <Route path='/nuevacancha' element={< NewField/>} />
+                    <Route path='/nuevoproducto' element={<NewProduct />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
