@@ -39,14 +39,14 @@ function Header() {
               </nav> : null
           }
         </button>
-        <div className='Logo-Mobile-Container align-start justify-center'>
+        <LinkRouter to='/' className='Logo-Mobile-Container align-start justify-center'>
           <img className='Logo-Mobile' src='/LogoSportacus01-Light.png' alt='logoSportacus' />
-        </div>
+        </LinkRouter>
 
         {/* Desktop */}
-        <div className='Logo-Desktop-Container Hide-Nav-Desktop justify-center'>
+        <LinkRouter to='/' className='Logo-Desktop-Container Hide-Nav-Desktop justify-center'>
           <img className='Logo-Desktop' src='/LogoNav02-Light.png' alt='logoSportacus' />
-        </div>
+        </LinkRouter>
         <nav className='Row-Menu row w50 justify-center'>
           {pages.map(navLinks)}
         </nav>

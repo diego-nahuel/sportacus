@@ -1,6 +1,9 @@
 import '../styles/Components.css'
 import React, { useEffect, useState, useRef } from 'react';
-import { useGetAllQuery } from '../features/productsApi'
+import { useGetAllQuery } from '../features/productsApi';
+import StopPropagation from '../actions/StopPropagation';
+import SportCheckDesktop from '../actions/SportsCheckD';
+import SportCheckMobile from '../actions/SportsCheckM';
 
 const sports = [
   { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Sport 1' },
@@ -12,12 +15,12 @@ const sports = [
 ]
 
 export default function Productos() {
-let [search, setSearch] = useState('')
-const busqueda=useRef()
-const searching = ()=>(
-  setSearch(busqueda.current.value),
-  console.log(search)
-)
+  let [search, setSearch] = useState('')
+  const busqueda = useRef()
+  const searching = () => (
+    setSearch(busqueda.current.value),
+    console.log(search)
+  )
   let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
   if (isLoading) {
     petition = []
@@ -26,7 +29,7 @@ const searching = ()=>(
   }
   let allProducts
   petition.response ? allProducts = petition.response : allProducts = petition
-  
+
   //  console.log(allProducts)
 
   const productList = (product) =>
@@ -47,19 +50,9 @@ const searching = ()=>(
 
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${product.price}</p>
-          <button className='Card-Button submit-button br-none w50 text-dark form-padding'>Comprar</button>
+          <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'>Comprar</button>
         </div>
       </div>
-    </>
-
-  const sportCheckDesktop = (sport) =>
-    <>
-      <button className='Hide-Checkbox-Mobile form-padding button-check'>
-        <label className='justify-center check-indent'>
-          <input type="checkbox"></input>
-          {sport.sport}
-        </label>
-      </button>
     </>
 
   const sportSelect = (sport) =>
@@ -76,23 +69,16 @@ const searching = ()=>(
       setOpenCheckbox(true)
     }
   };
-  const freezeCheckbox = event => {
-    event.stopPropagation();
-  };
-
-  const sportCheckMobile = (sport) =>
-    <>
-      <label className='Checkbox-Responsive-Divider align-center check-indent ypad-5'>
-        <input type="checkbox"></input>
-        {sport.sport}
-      </label>
-    </>
 
   return (
     <>
       <main className='main-bg main-height text-light justify-center'>
         <div className='container-width bg blur col gap-15 pad-10'>
-          <h3>Productos</h3>
+          <div className='col-row-768 gap-5 space-between'>
+            <h3>Productos</h3>
+            <input className='Search-Input br3 form-padding bg-light align-end' type="search" ref={busqueda} placeholder="Busque un producto..." onChange={searching}></input>
+          </div>
+
           <div className='FilterSort bg-dark br3 space-between w100'>
             <div className='Checkboxes justify-start'>
 
@@ -102,13 +88,14 @@ const searching = ()=>(
                   <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
                 </div>
                 {OpenCheckbox ?
-                  <button className='br3 w100 form-padding button-check' onClick={freezeCheckbox}>
-                    {sports.map(sportCheckMobile)}
+                  <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
+                    {sports.map(SportCheckMobile)}
                   </button> : null}
               </div>
-              {sports.map(sportCheckDesktop)}
+
+              {sports.map(SportCheckDesktop)}
             </div>
-            <input type="search" ref={busqueda} placeholder="Busque un producto..." onChange={searching}></input>
+
             <select className='Select form-padding bg-light flex-end'>
               <option></option>
               {sports.map(sportSelect)}

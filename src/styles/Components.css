@@ -56,6 +56,10 @@
     width: 100%;
 }
 
+.Search-Input {
+    width: 100%;
+}
+
 @media (min-width: 769px) {
     .FilterSort {
         flex-flow: row;
@@ -76,6 +80,10 @@
 
     .Hide-Checkbox-Desktop {
         display: none;
+    }
+
+    .Search-Input {
+        width: 25%;
     }
 }
 
