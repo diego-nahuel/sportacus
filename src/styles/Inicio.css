@@ -1,13 +1,31 @@
-.Slogan{
+.Slogan {
     background-color: white;
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 10px;
 }
-.Slogan01{
-    color:blue;
+
+.Slogan01 {
+    color: blue;
 }
-.Slogan02{
-    color:red;
+
+.Slogan02 {
+    /* color:red; */
+    color: #ff3847;
+}
+
+.Slogan-Blue-Light {
+    color: #178bff;
+    /* Color logo azul claro */
+}
+
+.Slogan-Blue-Dark {
+    color: #0051a4;
+    /* Color logo azul oscuro */
+}
+
+.Slogan-Red {
+    /* color:red; */
+    color: #ff3847;
 }
