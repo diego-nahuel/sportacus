@@ -1,6 +1,9 @@
 import '../styles/Components.css'
 import React, { useEffect, useState, useRef } from 'react';
-import { useGetAllQuery } from '../features/productsApi'
+import { useGetAllQuery } from '../features/productsApi';
+import StopPropagation from '../actions/StopPropagation';
+import SportCheckDesktop from '../actions/SportsCheckD';
+import SportCheckMobile from '../actions/SportsCheckM';
 
 const sports = [
   { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Sport 1' },
@@ -52,16 +55,6 @@ export default function Productos() {
       </div>
     </>
 
-  const sportCheckDesktop = (sport) =>
-    <>
-      <button className='Hide-Checkbox-Mobile form-padding button-check'>
-        <label className='justify-center check-indent'>
-          <input type="checkbox"></input>
-          {sport.sport}
-        </label>
-      </button>
-    </>
-
   const sportSelect = (sport) =>
     <>
       <option>{sport.name}</option>
@@ -76,17 +69,6 @@ export default function Productos() {
       setOpenCheckbox(true)
     }
   };
-  const freezeCheckbox = event => {
-    event.stopPropagation();
-  };
-
-  const sportCheckMobile = (sport) =>
-    <>
-      <label className='Checkbox-Responsive-Divider align-center check-indent ypad-5'>
-        <input type="checkbox"></input>
-        {sport.sport}
-      </label>
-    </>
 
   return (
     <>
@@ -106,12 +88,14 @@ export default function Productos() {
                   <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
                 </div>
                 {OpenCheckbox ?
-                  <button className='br3 w100 form-padding button-check' onClick={freezeCheckbox}>
-                    {sports.map(sportCheckMobile)}
+                  <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
+                    {sports.map(SportCheckMobile)}
                   </button> : null}
               </div>
-              {sports.map(sportCheckDesktop)}
+
+              {sports.map(SportCheckDesktop)}
             </div>
+
             <select className='Select form-padding bg-light flex-end'>
               <option></option>
               {sports.map(sportSelect)}
