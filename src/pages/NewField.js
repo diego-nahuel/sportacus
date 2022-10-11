@@ -3,49 +3,48 @@ import apiUrl from "../API";
 import { useNewFieldsMutation } from "../features/fieldsApi";
 import '../styles/NewField.css'
 
-export default function NewField(){
+export default function NewField() {
     const [sendField] = useNewFieldsMutation()
-    const name=useRef()
-    const city=useRef()
-    const price=useRef()
-    const image=useRef()
-    const description=useRef()
+    const name = useRef()
+    const city = useRef()
+    const sport = useRef()
+    const price = useRef()
+    const image = useRef()
+    const description = useRef()
 
-const enviar = (e)=>{
-    e.preventDefault()
-    let field = {
-        name: name.current.value,
-        user:JSON.parse(localStorage.getItem("user")).id,
-        city: city.current.value,
-        price:price.current.value,
-        image:image.current.value,
-        description:description.current.value,
-        likes:[]
+    const sendNewField = (e) => {
+        e.preventDefault()
+        let field = {
+            name: name.current.value,
+            user: JSON.parse(localStorage.getItem("user")).id,
+            sport: sport.current.value,
+            city: city.current.value,
+            price: price.current.value,
+            image: image.current.value,
+            description: description.current.value,
+            likes: []
+        }
+        sendField(field)
     }
-    sendField(field)
-}    
 
-    return(
+    return (
         <>
-        <h1>Nueva Cancha</h1>
-        <form className='form'>
-            <label to='name' className="label">Nombre
-                <input type='text' name='name' placeholder="Inserte el nombre de la cancha" className="input" ref={name}/> 
-            </label>
-            <label to='city' className="label">Ciudad
-                <input type='text' name='city' placeholder="Inserte la ciudad de la cancha" className="input" ref={city}/> 
-            </label>
-            <label to='price' className="label">Precio
-                <input type='text' name='price' placeholder="Inserte el precio de la cancha" className="input" ref={price}/> 
-            </label>
-            <label to='image' className="label">Imagen
-                <input type='text' name='image' placeholder="Inserte el link de la imagen de la cancha" className="input" ref={image}/> 
-            </label>
-            <label to='description' className="label">Descripcion
-                <input type='text' name='description' placeholder="Inserte la descripcion de la cancha" className="input" ref={description}/> 
-            </label>
-            <button type="send" onClick={enviar}>Enviar</button>
-        </form>
+            <main className="main-bg justify-center">
+                <div className="container-width col align-center bg blur main-height text-light xpad-10 ypad-5">
+                    <h2>Nueva Cancha</h2>
+                    <form className='Form-Container flex-center bg-dark align-end gap-15 col br3 pad-15'>
+                        <input className="w100 br3 bg-light form-padding" type='text' name='name' placeholder="Nombre de la cancha" ref={name} />
+                        <input className="w100 br3 bg-light form-padding" type='text' name='sport' placeholder="Deporte de la cancha" ref={sport} />
+                        <input className="w100 br3 bg-light form-padding" type='text' name='city' placeholder="Ciudad de la cancha" ref={city} />
+                        <input className="w100 br3 bg-light form-padding" type='text' name='price' placeholder="Precio de la cancha" ref={price} />
+                        <input className="w100 br3 bg-light form-padding" type='text' name='image' placeholder="Link de la imagen de la cancha" ref={image} />
+                        <textarea type='text' name='description' placeholder="Descripcion del producto" className="br3 bg-light form-padding min-h100 max-h250 min-w100 max-w100" ref={description} />
+                        <button className="submit-button br3 w100" type="send" onClick={sendNewField}>Enviar</button>
+                    </form>
+                </div>
+            </main>
+
+
         </>
     )
 }
