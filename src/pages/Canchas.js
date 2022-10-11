@@ -88,7 +88,7 @@ export default function Canchas() {
       <main className='main-bg main-height text-light justify-center'>
         <div className='container-width bg blur col gap-15 pad-10'>
           <div className='col-row-768 gap-5 space-between'>
-            <h3>Canchas</h3>
+            <h2>Canchas</h2>
             <input className='Search-Input w25 br3 form-padding bg-light align-end' type="search" ref={searchInput} onChange={accion} placeholder="Buscar cancha..."></input>
           </div>
 
