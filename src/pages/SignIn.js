@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import Alert from '../components/Alert';
 import '../styles/UserForm.css';
+import SignInGoogle from '../components/SignInGoogle';
 
 export default function SignIn() {
 
@@ -63,10 +64,9 @@ export default function SignIn() {
             <form className='Form-Container w50 bg-dark pad-15 form-width br3 gap-15 col' onSubmit={handleSubmit}>
             <h3 className='text-light'>Entra a tu cuenta</h3>
               {formSignIn.map(userForm)}
+              <SignInGoogle />
               <button className='br3 form-padding submit-button' type='submit'>Iniciar Sesión</button>
-              {/* <SignInGoogle /> */}
               </form>
- 
         </div>
       </main>
     </>
