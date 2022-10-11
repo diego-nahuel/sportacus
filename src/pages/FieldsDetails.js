@@ -6,7 +6,8 @@ import InputDetails from "../components/InputDetails";
 
 
 export default function FieldsDetails() {
-    const id = useParams()
+    const id = useParams() 
+    
     const [field, setField] = useState()
     useEffect(() => {
         axios.get(apiUrl + '/fields/' + id.id)
