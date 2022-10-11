@@ -5,14 +5,14 @@ import { useState, useEffect } from "react";
 import InputDetails from "../components/InputDetails";
 
 
-export default function FieldsDetails(){
-const id = useParams()
-const [field, setField]=useState()
-useEffect(()=>{
-    axios.get(apiUrl+'/fields/'+id.id)
-        .then(response => setField(response.data.response))
+export default function FieldsDetails() {
+    const id = useParams()
+    const [field, setField] = useState()
+    useEffect(() => {
+        axios.get(apiUrl + '/fields/' + id.id)
+            .then(response => setField(response.data.response))
     }, [])
-console.log(field)
+    console.log(field)
 
-return(<InputDetails data={field}/>)
+    return (<InputDetails data={field} />)
 }
