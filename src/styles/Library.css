@@ -14,7 +14,7 @@
 
 .container-width {
   max-width: 1040px;
-  width: 95%;
+  width: 100%;
 }
 
 .main-bg {
@@ -704,6 +704,10 @@
 
 .max-w100 {
   max-width: 100%;
+}
+
+.max-w960 {
+  max-width: 960px;
 }
 
 /*--------------------------------------------*/
