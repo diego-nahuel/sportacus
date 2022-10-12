@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import {useCreateCommentMutation} from '../../features/commentApi'
+import {useCreateCommentMutation} from '../../features/commentAPI'
 
 export default function NuevoComentario() {
     let id = useParams()
