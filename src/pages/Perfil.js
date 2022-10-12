@@ -17,6 +17,7 @@ export default function Profile() {
     { name: 'url', type: 'photo', placeholder: 'Avatar' }
   ]
   const userForm = (input) => <input type={input.type} name={input.name} className='br3 form-padding' placeholder={input.placeholder} /* onChange={handleInput} */></input>
+  
   return (
     <>
       <main className='main-bg main-height justify-center'>
@@ -24,12 +25,13 @@ export default function Profile() {
 
           <h2 className='text-light'>Hola {user.name}, bienvenido a tu perfil!</h2>
 
-          <div className='User-Info justify-center bg-dark br3 row gap-30 pad-15'>
+          <div className='User-Info justify-center bg-dark br3 row gap-15 pad-15'>
             <img src='https://wallpapercave.com/wp/wp4793571.jpg' alt='User Avatar' className='Usuario-Avatar justify-center' />
 
-            <div className='Profile-Divider transparent-25'></div>
+            <div className='X-Profile-Divider transparent-25'></div>
+            <div className='Y-Profile-Divider transparent-25'></div>
 
-            <dl className='text-light w-bold'>
+            <dl className='text-light w-bold w100'>
               <dt>Nombre: </dt>
               <dd className={user.class}>{user.name}</dd>
               <dt>Apellido: </dt>
