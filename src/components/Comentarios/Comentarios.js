@@ -1,20 +1,31 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+import { useGetFromFieldQuery } from '../../features/commentAPI';
 
-export default function Comentarios() {
-
-    const user = {
-        name: 'Lionel',
+export default function Comentarios(props) {
+    const id = useParams()
+    let {data:comments,isLoading,isSuccess}= useGetFromFieldQuery(id.id)
+    if (isLoading) {
+        comments=[]
+    }else if (isSuccess) {
+        comments=comments
     }
+let commentField=comments.response
+
+    const commentCard=(com)=>(
+        <div className='Contenedor-Comentario row bg-dark text-light'>
+        <div className='Usuario-Info col align-start pad-10 gap-5'>
+            <img className='Usuario-IMG' src={com.user.photo} />
+            <h4 className='align-center w-normal'>{com.user.name}</h4>
+        </div>
+        <div className='ydivider-light transparent-25'></div>
+        <p className='Comentario'>{com.comment}</p>
+    </div>
+    )
+
     return (
         <>
-            <div className='Contenedor-Comentario row'>
-                <div className='Usuario-Info col align-start pad-10 gap-5'>
-                    <img className='Usuario-IMG' src='https://static2.abc.es/media/play/2020/09/29/avatar-kE4H--1024x512@abc.jpeg' />
-                    <h4 className='align-center w-normal'>{user.name}</h4>
-                </div>
-                <div className='ydivider-dark transparent-25'></div>
-                <p className='Comentario'>Co mmentCo mmentCommentCommentCommentComment CommentCommentCommentdawdntComm mmenentCo mmentCommentCommentCommentComment CommentCommentCommentdawdntComm mmenentCo mmentCommentCommentCommentComment CommentCommentCommentdawdntComm mmen</p>
-            </div>
+           {commentField?.map(commentCard)}
         </>
     )
 }
