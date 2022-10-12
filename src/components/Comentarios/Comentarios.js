@@ -13,12 +13,12 @@ export default function Comentarios(props) {
 let commentField=comments.response
 
     const commentCard=(com)=>(
-        <div className='Contenedor-Comentario row'>
+        <div className='Contenedor-Comentario row bg-dark text-light'>
         <div className='Usuario-Info col align-start pad-10 gap-5'>
             <img className='Usuario-IMG' src={com.user.photo} />
             <h4 className='align-center w-normal'>{com.user.name}</h4>
         </div>
-        <div className='ydivider-dark transparent-25'></div>
+        <div className='ydivider-light transparent-25'></div>
         <p className='Comentario'>{com.comment}</p>
     </div>
     )
