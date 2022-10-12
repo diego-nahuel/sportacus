@@ -3,6 +3,7 @@ import axios from "axios";
 import apiUrl from "../API";
 import { useState, useEffect } from "react";
 import InputDetails from "../components/InputDetails";
+import NuevoComentario from "../components/Comentarios/NuevoComentario";
 
 
 export default function FieldsDetails() {
@@ -14,5 +15,10 @@ export default function FieldsDetails() {
     }, [])
     console.log(field)
 
-    return (<InputDetails data={field} />)
+    return (
+        <>
+        <InputDetails data={field} />
+        <NuevoComentario />
+        </>
+    )
 }
