@@ -25,8 +25,8 @@ function Comunidad() {
 
   return (
     <>
-      <main className='main-height main-bg justify-center'>
-        <div className='bg blur container-width col align-center ypad-15 gap-15'>
+      <main className='main-bg justify-center'>
+        <div className='main-height bg blur container-width col align-center ypad-15 gap-15'>
           {commentsArray.map(commentsFunction)}
           <NuevoComentario />
         </div>
