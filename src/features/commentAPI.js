@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import apiUrl from "../API";
 
-const commentsAPI =  createApi({
+export const commentsAPI =  createApi({
     reducerPath: 'commentsAPI',
 
     baseQuery: fetchBaseQuery({
@@ -34,7 +34,10 @@ const commentsAPI =  createApi({
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
+        getFromField: builder.query({
+            query:(id)=> `/comments/query?field=${id}`
+        })
     })
 });
 
-export const {useAllCommentsQuery, useEditCommentMutation, useDeleteCommentMutation, useCreateCommentMutation} = commentsAPI
+export const {useAllCommentsQuery, useEditCommentMutation, useDeleteCommentMutation, useCreateCommentMutation, useGetFromFieldQuery} = commentsAPI
