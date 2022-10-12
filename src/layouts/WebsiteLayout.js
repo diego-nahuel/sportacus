@@ -14,6 +14,7 @@ import Comunidad from '../pages/Comunidad';
 import FieldsDetails from '../pages/FieldsDetails';
 import NewField from '../pages/NewField';
 import NewProduct from '../pages/NewProduct';
+import Cart from '../pages/Cart';
 
 export default function WebsiteLayout() {
     return (
@@ -33,6 +34,7 @@ export default function WebsiteLayout() {
                     <Route path='/canchas/:id' element={<FieldsDetails />}/>
                     <Route path='/nuevacancha' element={< NewField/>} />
                     <Route path='/nuevoproducto' element={<NewProduct />} />
+                    <Route path='/carrito' element={<Cart/>} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
