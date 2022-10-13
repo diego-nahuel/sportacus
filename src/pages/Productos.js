@@ -42,7 +42,9 @@ export default function Productos() {
     petition?.response ? setAllProducts(petition.response) : setAllProducts(petition)
   }, [petition])
   let newSet = [...new Set(allProducts?.map(p => p.sport))]
-
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+  }
   const productList = (product) =>
     <>
       <div className='Card bg-dark br3'>
@@ -60,7 +62,7 @@ export default function Productos() {
         <div className='xdivider-light transparent-25 ymar-10'></div>
 
         <div className='space-between w100'>
-          <p className='xpad-10 align-center'>Precio: ${product.price}</p>
+          <p className='xpad-10 align-center'>Precio: ${formatNumber(product.price)}</p>
           <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'
             onClick={()=>localStorage.setItem('carrito', product)}>Agregar</button>
         </div>
