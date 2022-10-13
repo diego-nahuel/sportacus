@@ -33,12 +33,13 @@ function Header() {
      setRole(JSON.parse(localStorage.getItem("user")).role):setRole('Visitor')  
 },[])
 console.log(role)
+
   return (
     <>
       <header className='NavBar NavBar-Links w100'>
         {/* Mobile */}
         <button className='Hide-Desktop bg-dark br-none' onClick={handleOpenNavMenu}>
-          <img className='Burger-IMG Hide-Nav-Burger justify-start' src='/MenuBurger.png'/>
+          <img className='Burger-IMG Hide-Nav-Burger justify-start' src='/MenuBurger.png' />
           {
             openNav ?
               <nav className='Col-Menu col w25 align-start'>
@@ -60,7 +61,7 @@ console.log(role)
 
         {/* Cart/Users */}
         <div className='justify-end row w25'>
-          <UserMenu/>
+          <UserMenu />
         </div>
       </header>
     </>
