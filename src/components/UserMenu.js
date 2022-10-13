@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as LinkRouter, useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
@@ -7,7 +7,6 @@ import { useSignInMutation, useSignOutMutation } from '../features/authAPI';
 import { addUser, removeUser } from '../features/userSlice';
 import ModalSignIn from './UserMenu/ModalSignIn'
 import ModalSignUp from './UserMenu/ModalSignUp'
-
 
 function UserMenu() {
     const userRedux = useSelector(state => state.user.u);
@@ -19,6 +18,12 @@ function UserMenu() {
     const [user, setUser] = useState({
         mail: "", password: "", from: "form"
     });
+
+    useEffect(()=>{
+        JSON.parse(localStorage.getItem('user'))?
+        dispatch(addUser(JSON.parse(localStorage.getItem('user')))):
+        dispatch(removeUser(null))
+    },[])
 
     /* Modal */
     const [modalSignIn, setModalSignIn] = useState(false)
@@ -52,7 +57,7 @@ function UserMenu() {
     const SignOutNav = () => {
         return (
             <LinkRouter className='dropdownItem decoration-none'>
-                <li className='row' to='/' onClick={signOutUser}>
+                <li className='row' to='/localhost:3000/' onClick={signOutUser}>
                     <img className='DI-icon' src='https://cdn-icons-png.flaticon.com/512/876/876779.png' />
                     <span>Salir</span>
                 </li>
@@ -61,7 +66,7 @@ function UserMenu() {
     }
     const signOutUser = async (e) => {
         setOpen(false)
-        let { error } = await signOut({ email: userRedux.email });
+        let { error } = await signOut({ mail: userRedux.mail });
         if (error) {
             console.log(error);
             Swal.fire({
@@ -117,7 +122,9 @@ function UserMenu() {
     return (
         <>
             <div>
-                <img className='Burger-IMG br3' src='https://icon-library.com/images/user-icon-png-transparent/user-icon-png-transparent-17.jpg' onClick={() => { setOpen(!open) }} />
+                {userRedux?
+                <img className='Burger-IMG br3' src={userRedux.photo} onClick={() => { setOpen(!open) }} />:
+                <img className='Burger-IMG br3' src='https://icon-library.com/images/user-icon-png-transparent/user-icon-png-transparent-17.jpg' onClick={() => { setOpen(!open) }} />}
 
                 <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
                     {userRedux ?

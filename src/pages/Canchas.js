@@ -7,15 +7,7 @@ import { useAllFieldsQuery } from '../features/fieldsApi'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
-
-const fields = [
-  { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Sport 1' },
-  { name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Sport 2' },
-  { name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Sport 3' },
-  { name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Sport 4' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Sport 5' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Sport 6' }
-]
+import sports from '../actions/SportList'
 
 const fieldList = (field) =>
   <div className='Card bg-dark br3'>
@@ -33,26 +25,10 @@ const fieldList = (field) =>
     </div>
   </div>
 
-const sportCheck = (field) =>
-  <button className='br3 form-padding button-check'>
-    <label className='align-center check-indent'>
-      <input type="checkbox" className=''></input>
-      {field.sport}
-    </label>
-  </button>
-
-const sportSelect = (field) =>
-  <option>{field.sport}</option>
+const sportSelect = (sport) =>
+  <option>{sport.sport}</option>
 
 export default function Canchas() {
-
-  const fieldCard = (field) =>
-    <div>
-      <h2>{field.name}</h2>
-      <img alt={field.name} src={field.image} />
-      <p>{field.city}</p>
-    </div>
-
   const [canchas, setCanchas] = useState([])
   const [search, setSearch] = useState('')
   const searchInput = useRef('')
@@ -61,7 +37,7 @@ export default function Canchas() {
     console.log(search)
   )
   useEffect(() => {
-    axios.get(apiUrl + `/fields?name=${search}`)
+    axios.get(apiUrl + `/fields?city=${search}`)
       .then(response => { setCanchas(response.data) },
       )
   }, [canchas])
@@ -102,16 +78,16 @@ export default function Canchas() {
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
-                    {fields.map(SportCheckMobile)}
+                    {sports.map(SportCheckMobile)}
                   </button> : null}
               </div>
 
-              {fields.map(SportCheckDesktop)}
+              {sports.map(SportCheckDesktop)}
             </div>
 
             <select className='Select form-padding bg-light flex-end'>
               <option></option>
-              {fields.map(sportSelect)}
+              {sports.map(sportSelect)}
             </select>
           </div>
 

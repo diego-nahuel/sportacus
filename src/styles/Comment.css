@@ -1,0 +1,30 @@
+.Contenedor-Comentario{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Contenedor2{
+    display: flex;
+    flex-direction: row;
+}
+
+.Contenedor3{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.updateComment{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.deleteComment{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
