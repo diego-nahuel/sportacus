@@ -24,7 +24,8 @@ export default function ModalSignIn() {
         });
     };
 
-    const [signIn] = useSignInMutation();
+    const [signIn, { data: signInRedux, error }] = useSignInMutation();
+    let id = signInRedux?.response;
     let Navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,6 +34,7 @@ export default function ModalSignIn() {
             Alert("error", error.data.message)
         } else {
             localStorage.setItem("token", data.response.token);
+            localStorage.setItem("user", JSON.stringify(id.user));
             dispatch(addUser(data.response.user));
             Alert("success", data.message)
             Navigate("/");
