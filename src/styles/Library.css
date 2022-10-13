@@ -45,6 +45,44 @@
 }
 
 /*--------------------------------------------*/
+.p-fixed {
+  position: fixed;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.p-sticky {
+  position: sticky;
+}
+
+.p-static {
+  position: static;
+}
+
+/*--------------------------------------------*/
+.z-index-10 {
+  z-index: 10;
+}
+
+.z-index-20 {
+  z-index: 20;
+}
+
+.z-index-30 {
+  z-index: 30;
+}
+
+.z-index-40 {
+  z-index: 40;
+}
+
+/*--------------------------------------------*/
 .font-xxs {
   font-size: xx-small;
 }
@@ -123,7 +161,6 @@
 }
 
 /*--------------------------------------------*/
-
 .text-left {
   text-align: left;
 }
@@ -146,8 +183,44 @@
   text-decoration: none;
 }
 
-.list-style-none {
-  list-style: none
+/*--------------------------------------------*/
+.text-img-container {
+  position: relative;
+}
+
+.text-img-tl {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.text-img-top {
+  position: absolute;
+  right: 16px;
+}
+
+.text-img-tr {
+  position: absolute;
+  right: 16px;
+}
+
+.text-img-bl {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.text-img-br {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.text-img-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /*--------------------------------------------*/
@@ -628,7 +701,12 @@
 }
 
 .br-lightblue {
-  border: 2px solid aqua
+  border: 2px solid #0051a4;
+}
+
+.br-lightblue:hover {
+  border: 2px solid #178bff;
+  cursor: pointer;
 }
 
 .br-red {
@@ -938,6 +1016,26 @@
   height: 500px;
 }
 
+.vh25 {
+  height: 25vh;
+}
+
+.vh50 {
+  height: 50vh;
+}
+
+.vh75 {
+  height: 75vh;
+}
+
+.vh90 {
+  height: 90vh;
+}
+
+.vh100 {
+  height: 100vh;
+}
+
 /*--------------------------------------------*/
 .min-h25 {
   min-height: 25px;
@@ -1021,17 +1119,21 @@
   display: none;
 }
 
-.overflow-hidden {
-  overflow: hidden;
+.list-style-none {
+  list-style: none;
 }
 
-.transition {
-  transition: ease-in-out 0.25s;
+.overflow-hidden {
+  overflow: hidden;
 }
 
 /*--------------------------------------------*/
 .blur {
   backdrop-filter: blur(3px);
+}
+
+.transition {
+  transition: ease-in-out 0.25s;
 }
 
 /*--------------------------------------------*/
