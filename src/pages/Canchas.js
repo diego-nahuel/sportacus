@@ -3,24 +3,25 @@ import '../styles/Components.css'
 import { React, useEffect, useRef, useState } from 'react'
 import apiUrl from '../API'
 import { Link as LinkRouter } from 'react-router-dom'
-import { useAllFieldsQuery } from '../features/fieldsApi'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
+import { useAllFieldsQuery } from '../features/fieldsApi'
+
 
 const fields = [
-  { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Sport 1' },
-  { name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Sport 2' },
-  { name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Sport 3' },
-  { name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Sport 4' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Sport 5' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Sport 6' }
+  { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Futbol' },
+  { name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Basquet' },
+  { name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Padel' },
+  { name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Natacion' },
+  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Tenis' },
+  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Voley' }
 ]
 
 const fieldList = (field) =>
   <div className='Card bg-dark br3'>
     <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{field.name}</h4>
-    <img className='IMG-Card' src={field.image} />
+    <img className='IMG-Card' src={field.image} alt=''/>
     <p className='xpad-10'>Deporte: {field.sport}</p>
     <div className='xdivider-light transparent-25 ymar-10'></div>
     <p className='xpad-10'>Ciudad: {field.city}</p>
@@ -41,10 +42,22 @@ const sportCheck = (field) =>
     </label>
   </button>
 
-const sportSelect = (field) =>
-  <option>{field.sport}</option>
-
 export default function Canchas() {
+  const [canchas, setCanchas] = useState([])
+  const [search, setSearch] = useState('')
+  const searchInput = useRef('')
+
+
+  let { data: petition, isLoading, isSuccess } = useAllFieldsQuery(search)
+if (isLoading) {
+  petition = []
+} else if (isSuccess) {
+  petition = petition
+}
+let allProducts
+petition?.response?.sport ? allProducts = petition.response.sport : allProducts = petition
+
+// console.log(allProducts)
 
   const fieldCard = (field) =>
     <div>
@@ -53,9 +66,6 @@ export default function Canchas() {
       <p>{field.city}</p>
     </div>
 
-  const [canchas, setCanchas] = useState([])
-  const [search, setSearch] = useState('')
-  const searchInput = useRef('')
   const accion = () => (
     setSearch(searchInput.current.value),
     console.log(search)
@@ -66,12 +76,6 @@ export default function Canchas() {
       )
   }, [canchas])
 
-  // let {data:canchas,isLoading,isSuccess } = useAllFieldsQuery(search)
-  // if (isLoading) {
-  //   canchas = []
-  // } else if (isSuccess) {
-  //   canchas = canchas
-  // }
 
   const [OpenCheckbox, setOpenCheckbox] = useState(false)
   const handleOpenCheckbox = () => {
@@ -98,7 +102,7 @@ export default function Canchas() {
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
                 <div className='row xpad-10 space-between'>
                   <h5 className='text-light w-normal font-n ypad-5'>Categorías </h5>
-                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
+                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' alt=''/>
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
@@ -108,11 +112,6 @@ export default function Canchas() {
 
               {fields.map(SportCheckDesktop)}
             </div>
-
-            <select className='Select form-padding bg-light flex-end'>
-              <option></option>
-              {fields.map(sportSelect)}
-            </select>
           </div>
 
           <div className='card-container justify-center gap-30'>
