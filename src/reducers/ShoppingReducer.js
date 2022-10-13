@@ -1,42 +1,43 @@
-import { TYPES } from "../actions/ShoppingAction";
+import { createSlice } from "@reduxjs/toolkit";
 import { ProductDB } from "../features/ProductsDB";
-
 
 export const shoppingInitialState = {
     products: ProductDB,
     cart: []
 }
 
-export function shoppingReducer(state,action) {
-    switch (action.type) {
-        case TYPES.ADD_TO_CART:{
+export const shoppingReducer = createSlice({
+    name: 'shopping',
+    initialState: shoppingInitialState,
+    reducers: {
+        ADD_TO_CART: (state,action) => {
             let newItem = state.products.find(product => product._id === action.payload)
-
+            console.log(action.payload);
             let itemInCart = state.cart.find(item => item._id === newItem._id)
-            return itemInCart? {
-                ...state, cart:state.cart.map(item => item._id === newItem._id? {...item,quantity:item.quantity +1}:item)
-            } 
+           state.cart = itemInCart? 
+                state.cart.map(item => item._id === newItem._id? {...item,quantity:item.quantity +1}:item)
             :
-            { ...state, cart:[...state.cart, {...newItem,quantity:1}]}
-        }
-        case TYPES.REMOVE_ONE_FROM_CART:{
+            [...state.cart, {...newItem,quantity:1}]
+        },
+        REMOVE_ONE_FROM_CART: (state,action) => {
             let itemToDelete = state.cart.find(item => item._id === action.payload)
-
-            return itemToDelete.quantity > 1 ?{
-                ...state, cart: state.cart.map(item => item._id === action.payload? {...item, quantity: item.quantity -1}
+            if(itemToDelete){
+           state.cart = itemToDelete.quantity > 1 ?
+                 state.cart.map(item => item._id === action.payload? {...item, quantity: item.quantity -1}
                     : item)
-            }:{
-                ...state, cart: state.cart.filter(item => item._id !== action.payload)
+            :
+                 state.cart.filter(item => item._id !== action.payload)
             }
+        },
+        REMOVE_ALL_FROM_CART: (state,action) =>{
+           state.cart = 
+                state.cart.filter(item => item._id !== action.payload)
+        },
+        CLEAR_CART: (state,action) => {
+           state.cart = []
         }
-        case TYPES.REMOVE_ALL_FROM_CART:{
-            return {
-                ...state, cart: state.cart.filter(item => item._id !== action.payload)
-            }
-        }
-        case TYPES.CLEAR_CART:
-            return shoppingInitialState
-        default:
-            return state;
     }
-}
+})
+export const {ADD_TO_CART,REMOVE_ONE_FROM_CART,REMOVE_ALL_FROM_CART,CLEAR_CART} = shoppingReducer.actions
+
+export default shoppingReducer.reducer
