@@ -52,7 +52,7 @@ function UserMenu() {
     const SignOutNav = () => {
         return (
             <LinkRouter className='dropdownItem decoration-none'>
-                <li className='row' to='/' onClick={signOutUser}>
+                <li className='row' to='/localhost:3000/' onClick={signOutUser}>
                     <img className='DI-icon' src='https://cdn-icons-png.flaticon.com/512/876/876779.png' />
                     <span>Salir</span>
                 </li>
