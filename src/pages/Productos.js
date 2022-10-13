@@ -5,38 +5,49 @@ import StopPropagation from '../actions/StopPropagation';
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
 
-const sports = [
-  { id: 'uno', name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Futbol' },
-  { id: 'dos',  name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Basquet' },
-  { id: 'tres',  name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Padel' },
-  { id: 'cuatro',  name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Natacion' },
-  { id: 'cinco',  name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Tenis' },
-  { id: 'seis',  name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Voley' }
-]
 
 export default function Productos() {
   let [search, setSearch] = useState('')
+  const [allProducts, setAllProducts] = useState([])
+  const [handleCheck, setHandleCheck] = useState([]);
   const searchInput = useRef()
   const searching = () => (
-    setSearch(searchInput.current.value),
-    console.log(search)
+    setSearch(searchInput.current.value)
   )
-  let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
-  if (isLoading) {
-    petition = []
-  } else if (isSuccess) {
-    petition = petition
+  
+  const change = (e) =>{
+    setHandleCheck({...handleCheck, [e.target.value]: e.target.checked})
   }
-  let allProducts
-  petition?.response ? allProducts = petition.response : allProducts = petition
 
-  //  console.log(allProducts)
+  useEffect(() => {
+    function filterBySport(value){
+      if(handleCheck !== undefined){
+        if(handleCheck.sport === true){
+          return value.sport
+        }
+      } else{
+        return value
+      }
+    }
+    setAllProducts(filterBySport)
+  }, [handleCheck])
+  
+  let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
+  useEffect(() => {
+    if (isLoading) {
+      petition = []
+    } else if (isSuccess) {
+      petition = petition
+    }
+    petition?.response ? setAllProducts(petition.response) : setAllProducts(petition)
+  }, [petition])
+  let newSet = [...new Set(allProducts?.map(p => p.sport))]
 
   const productList = (product) =>
     <>
       <div className='Card bg-dark br3'>
         <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{product.name}</h4>
-        <img className='IMG-Card' src={product.image} />
+        <img className='IMG-Card' src={product.image} alt=''/>
         <p className='xpad-10 h75 overflow-hidden font-n w-normal'>{product.description}</p>
 
         <div className='xdivider-light transparent-25 ymar-10'></div>
@@ -60,7 +71,6 @@ export default function Productos() {
   const handleOpenCheckbox = () => {
     if (OpenCheckbox == true) {
       setOpenCheckbox(false)
-      console.log(setOpenCheckbox)
     } else {
       setOpenCheckbox(true)
     }
@@ -81,15 +91,15 @@ export default function Productos() {
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
                 <div className='row xpad-10 space-between'>
                   <h5 className='text-light w-normal font-n ypad-5'>Categorías </h5>
-                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
+                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' alt=''/>
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
-                    {sports.map(SportCheckMobile)}
+                    {newSet.map((sport) => SportCheckMobile(sport, change))}
                   </button> : null}
               </div>
 
-              {sports.map(SportCheckDesktop)}
+              {newSet.map((sport) => SportCheckDesktop(sport, change))}
             </div>
           </div>
 

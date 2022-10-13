@@ -1,9 +1,9 @@
-const SportCheckDesktop = (sport) =>
+const SportCheckDesktop = (sport, change) =>
     <>
       <button className='Hide-Checkbox-Mobile form-padding button-check'>
         <label className='justify-center check-indent'>
-          <input type="checkbox"></input>
-          {sport.sport}
+          <input type="checkbox" onChange={change} value={sport}></input>
+          {sport}
         </label>
       </button>
     </>

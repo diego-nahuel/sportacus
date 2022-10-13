@@ -1,22 +1,10 @@
-import axios from 'axios'
 import '../styles/Components.css'
 import { React, useEffect, useRef, useState } from 'react'
-import apiUrl from '../API'
 import { Link as LinkRouter } from 'react-router-dom'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
 import { useAllFieldsQuery } from '../features/fieldsApi'
-
-
-const fields = [
-  { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Futbol' },
-  { name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Basquet' },
-  { name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Padel' },
-  { name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Natacion' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Tenis' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Voley' }
-]
 
 const fieldList = (field) =>
   <div className='Card bg-dark br3'>
@@ -44,20 +32,39 @@ const sportCheck = (field) =>
 
 export default function Canchas() {
   const [canchas, setCanchas] = useState([])
+  const [handleCheck, setHandleCheck] = useState([]);
   const [search, setSearch] = useState('')
   const searchInput = useRef('')
+  const accion = () => (
+    setSearch(searchInput.current.value)
+  )
+  const change = (e) =>{
+    setHandleCheck({...handleCheck, [e.target.value]: e.target.checked})
+  }
 
+  useEffect(() => {
+    function filterBySport(value){
+      if(handleCheck !== undefined){
+        if(handleCheck.sport === true){
+          return value.sport
+        }
+      } else{
+        return value
+      }
+    }
+    setCanchas(filterBySport)
+  }, [handleCheck])
 
   let { data: petition, isLoading, isSuccess } = useAllFieldsQuery(search)
-if (isLoading) {
-  petition = []
-} else if (isSuccess) {
-  petition = petition
-}
-let allProducts
-petition?.response?.sport ? allProducts = petition.response.sport : allProducts = petition
-
-// console.log(allProducts)
+  useEffect(() => {
+    if (isLoading) {
+      petition = []
+    } else if (isSuccess) {
+      petition = petition
+    }
+    petition?.response ? setCanchas(petition.response) : setCanchas(petition)
+  }, [petition])
+  let newSet = [...new Set(canchas?.map(p => p.sport))]
 
   const fieldCard = (field) =>
     <div>
@@ -65,17 +72,6 @@ petition?.response?.sport ? allProducts = petition.response.sport : allProducts 
       <img alt={field.name} src={field.image} />
       <p>{field.city}</p>
     </div>
-
-  const accion = () => (
-    setSearch(searchInput.current.value),
-    console.log(search)
-  )
-  useEffect(() => {
-    axios.get(apiUrl + `/fields?name=${search}`)
-      .then(response => { setCanchas(response.data) },
-      )
-  }, [canchas])
-
 
   const [OpenCheckbox, setOpenCheckbox] = useState(false)
   const handleOpenCheckbox = () => {
@@ -106,16 +102,16 @@ petition?.response?.sport ? allProducts = petition.response.sport : allProducts 
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
-                    {fields.map(SportCheckMobile)}
+                    {newSet?.map((sport) => SportCheckMobile(sport, change))}
                   </button> : null}
               </div>
 
-              {fields.map(SportCheckDesktop)}
+              {newSet?.map((sport) => SportCheckDesktop(sport, change))}
             </div>
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {canchas?.response?.map(fieldList)}
+            {canchas?.map(fieldList)}
           </div>
         </div>
       </main>
