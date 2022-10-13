@@ -3,25 +3,16 @@ import '../styles/Components.css'
 import { React, useEffect, useRef, useState } from 'react'
 import apiUrl from '../API'
 import { Link as LinkRouter } from 'react-router-dom'
+import { useAllFieldsQuery } from '../features/fieldsApi'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
-import { useAllFieldsQuery } from '../features/fieldsApi'
-
-
-const fields = [
-  { name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Futbol' },
-  { name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Basquet' },
-  { name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Padel' },
-  { name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Natacion' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Tenis' },
-  { name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Voley' }
-]
+import sports from '../actions/SportList'
 
 const fieldList = (field) =>
   <div className='Card bg-dark br3'>
     <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{field.name}</h4>
-    <img className='IMG-Card' src={field.image} alt=''/>
+    <img className='IMG-Card' src={field.image} />
     <p className='xpad-10'>Deporte: {field.sport}</p>
     <div className='xdivider-light transparent-25 ymar-10'></div>
     <p className='xpad-10'>Ciudad: {field.city}</p>
@@ -34,48 +25,29 @@ const fieldList = (field) =>
     </div>
   </div>
 
-const sportCheck = (field) =>
-  <button className='br3 form-padding button-check'>
-    <label className='align-center check-indent'>
-      <input type="checkbox" className=''></input>
-      {field.sport}
-    </label>
-  </button>
+const sportSelect = (sport) =>
+  <option>{sport.sport}</option>
 
 export default function Canchas() {
   const [canchas, setCanchas] = useState([])
   const [search, setSearch] = useState('')
   const searchInput = useRef('')
-
-
-  let { data: petition, isLoading, isSuccess } = useAllFieldsQuery(search)
-if (isLoading) {
-  petition = []
-} else if (isSuccess) {
-  petition = petition
-}
-let allProducts
-petition?.response?.sport ? allProducts = petition.response.sport : allProducts = petition
-
-// console.log(allProducts)
-
-  const fieldCard = (field) =>
-    <div>
-      <h2>{field.name}</h2>
-      <img alt={field.name} src={field.image} />
-      <p>{field.city}</p>
-    </div>
-
   const accion = () => (
     setSearch(searchInput.current.value),
     console.log(search)
   )
   useEffect(() => {
-    axios.get(apiUrl + `/fields?name=${search}`)
+    axios.get(apiUrl + `/fields?city=${search}`)
       .then(response => { setCanchas(response.data) },
       )
   }, [canchas])
 
+  // let {data:canchas,isLoading,isSuccess } = useAllFieldsQuery(search)
+  // if (isLoading) {
+  //   canchas = []
+  // } else if (isSuccess) {
+  //   canchas = canchas
+  // }
 
   const [OpenCheckbox, setOpenCheckbox] = useState(false)
   const handleOpenCheckbox = () => {
@@ -102,16 +74,21 @@ petition?.response?.sport ? allProducts = petition.response.sport : allProducts 
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
                 <div className='row xpad-10 space-between'>
                   <h5 className='text-light w-normal font-n ypad-5'>Categorías </h5>
-                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' alt=''/>
+                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
-                    {fields.map(SportCheckMobile)}
+                    {sports.map(SportCheckMobile)}
                   </button> : null}
               </div>
 
-              {fields.map(SportCheckDesktop)}
+              {sports.map(SportCheckDesktop)}
             </div>
+
+            <select className='Select form-padding bg-light flex-end'>
+              <option></option>
+              {sports.map(sportSelect)}
+            </select>
           </div>
 
           <div className='card-container justify-center gap-30'>
