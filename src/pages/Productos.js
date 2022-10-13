@@ -4,15 +4,7 @@ import { useGetAllQuery } from '../features/productsApi';
 import StopPropagation from '../actions/StopPropagation';
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
-
-const sports = [
-  { id: 'uno', name: 'Name 1', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 1', sport: 'Futbol' },
-  { id: 'dos',  name: 'Name 2', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 2', sport: 'Basquet' },
-  { id: 'tres',  name: 'Name 3', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 3', sport: 'Padel' },
-  { id: 'cuatro',  name: 'Name 4', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 4', sport: 'Natacion' },
-  { id: 'cinco',  name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 5', sport: 'Tenis' },
-  { id: 'seis',  name: 'Name 5', photo: 'https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80', description: 'Description 6', sport: 'Voley' }
-]
+import sports from '../actions/SportList'
 
 export default function Productos() {
   let [search, setSearch] = useState('')
@@ -51,9 +43,14 @@ export default function Productos() {
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${product.price}</p>
           <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'
-            onClick={()=>localStorage.setItem('carrito', product)}>Agregar</button>
+           onClick={()=>localStorage.setItem('carrito', product)}>Agregar</button>
         </div>
       </div>
+    </>
+
+  const sportSelect = (sport) =>
+    <>
+      <option>{sport.name}</option>
     </>
 
   const [OpenCheckbox, setOpenCheckbox] = useState(false)
@@ -91,6 +88,11 @@ export default function Productos() {
 
               {sports.map(SportCheckDesktop)}
             </div>
+
+            <select className='Select form-padding bg-light flex-end'>
+              <option></option>
+              {sports.map(sportSelect)}
+            </select>
           </div>
 
           <div className='card-container justify-center gap-30'>

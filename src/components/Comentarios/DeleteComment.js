@@ -1,5 +1,6 @@
 import { useDeleteCommentMutation } from '../../features/commentAPI'
 import '../../styles/Comment.css'
+import styles from '../Styles'
 
 export default function DeleteComment(props) {
     const [deleteComment] = useDeleteCommentMutation()
@@ -12,7 +13,7 @@ export default function DeleteComment(props) {
 
     return (
         <>
-            <button className='br3-br br-lightblue transition form-padding bg-dark text-light' type="button" onClick={handleDelete}>Eliminar</button>
+            <button className={styles.deleteCommentButton} type="button" onClick={handleDelete}>Eliminar</button>
         </>
     )
 }
