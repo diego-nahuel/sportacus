@@ -25,7 +25,6 @@ export default function CarouselFields() {
             </ul>
           </div>
         </div>
-
       </SwiperSlide>
     </>
 
@@ -34,7 +33,7 @@ export default function CarouselFields() {
       <div className='Carousel-container'>
         <Swiper
           centeredSlides={true}
-          autoplay={{ delay: 3250000, disableOnInteraction: false }}
+          autoplay={{ delay: 3250, disableOnInteraction: false }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}>
           {fields.map(fieldList)}
