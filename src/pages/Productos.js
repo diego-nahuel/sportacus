@@ -1,9 +1,13 @@
 import '../styles/Components.css'
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef} from 'react';
 import { useGetAllQuery } from '../features/productsApi';
 import StopPropagation from '../actions/StopPropagation';
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
+
+import { ADD_TO_CART } from '../reducers/ShoppingReducer';
+import { useDispatch, useSelector } from 'react-redux';
+
 import sports from '../actions/SportList'
 
 export default function Productos() {
@@ -22,11 +26,13 @@ export default function Productos() {
   let allProducts
   petition?.response ? allProducts = petition.response : allProducts = petition
 
-  //  console.log(allProducts)
+  const dispatch = useDispatch()
+  const cart = useSelector(state => state)
+  const addToCart = (id) => {dispatch(ADD_TO_CART(id))}
 
-  const productList = (product) =>
+  const productList = (product, index) =>
     <>
-      <div className='Card bg-dark br3'>
+      <div className='Card bg-dark br3' key={index}>
         <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{product.name}</h4>
         <img className='IMG-Card' src={product.image} />
         <p className='xpad-10 h75 overflow-hidden font-n w-normal'>{product.description}</p>
@@ -43,6 +49,7 @@ export default function Productos() {
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${product.price}</p>
           <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'
+
            onClick={()=>localStorage.setItem('carrito', product)}>Agregar</button>
         </div>
       </div>
