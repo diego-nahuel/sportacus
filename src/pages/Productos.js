@@ -49,8 +49,7 @@ export default function Productos() {
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${product.price}</p>
           <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'
-
-           onClick={()=>localStorage.setItem('carrito', product)}>Agregar</button>
+           onClick={() => addToCart(product._id)}>Agregar</button>
         </div>
       </div>
     </>
