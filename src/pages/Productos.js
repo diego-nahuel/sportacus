@@ -47,7 +47,7 @@ export default function Productos() {
   const cart = useSelector(state => state)
   const addToCart = (id) => { dispatch(ADD_TO_CART(id)) }
   let newSet = [...new Set(allProducts.map(p => p.sport))]
-  let sports = ["Boxeo", "Futbol", "Basquet", "Voleibol", "Tenis", "Varios", "Natacion"]
+  let sports = ["Boxeo", "Futbol", "Basquet", "Voleibol", "Tenis", "Natacion", "Varios"]
 
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -102,21 +102,28 @@ export default function Productos() {
 
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
                 <div className='row xpad-10 space-between'>
-                  <h5 className='text-light w-normal font-n ypad-5'>Categorías </h5>
+                  <h5 className='text-light w-normal font-16 ypad-5'>Categorías </h5>
                   <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' alt='' />
                 </div>
                 {OpenCheckbox ?
-                  <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
-                    {newSet.map((sport) => SportCheckMobile(sport, change))}
-                  </button> : null}
+                  <div className='br3 w100 form-padding button-check col gap-10 bpad-10' onClick={StopPropagation}>
+                    <div className="xdivider-light transparent-50"></div>
+                    <label className='justify-start check-indent' htmlFor="all" >
+                      <input type="radio" onChange={change} value="" id="all" name="sport" ></input>
+                      Todos
+                    </label>
+                    {sports.map((sport) => SportCheckMobile(sport, change))}
+                  </div> : null}
               </div>
 
-              <label className='justify-start check-indent' htmlFor="all" >
-                <input type="radio" onChange={change} value="" id="all" name="sport" ></input>
-                Todos
-              </label>
+              <div className='Hide-Checkbox-Mobile row gap-10'>
+                <label className='justify-center check-indent button-check form-padding' htmlFor="all" >
+                  <input type="radio" onChange={change} value="" id="all" name="sport" ></input>
+                  Todos
+                </label>
+                {sports.map((sport) => SportCheckDesktop(sport, change))}
+              </div>
 
-              {sports.map((sport) => SportCheckDesktop(sport, change))}
 
             </div>
           </div>
