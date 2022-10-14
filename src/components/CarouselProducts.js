@@ -30,7 +30,6 @@ export default function CarouselProducts() {
 
   return (
     <>
-      <div className='Carousel-container'>
         <Swiper
           centeredSlides={true}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
@@ -38,7 +37,6 @@ export default function CarouselProducts() {
           modules={[Autoplay, Pagination, Navigation]}>
           {products.map(productList)}
         </Swiper>
-      </div>
     </>
   )
 }

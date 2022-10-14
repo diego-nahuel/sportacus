@@ -30,7 +30,7 @@ export default function CarouselFields() {
 
   return (
     <>
-      <div className='Carousel-container'>
+      <div className='bpad-15'>
         <Swiper
           centeredSlides={true}
           autoplay={{ delay: 3250, disableOnInteraction: false }}
