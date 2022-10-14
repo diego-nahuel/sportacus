@@ -3,12 +3,12 @@ import '../styles/Components.css'
 import { React, useEffect, useRef, useState } from 'react'
 import apiUrl from '../API'
 import { Link as LinkRouter } from 'react-router-dom'
-import { useAllFieldsQuery } from '../features/fieldsAPI'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
 import sports from '../actions/SportList'
 
+export default function Canchas() {
 const fieldList = (field) =>
   <div className='Card bg-dark br3'>
     <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{field.name}</h4>
@@ -28,7 +28,6 @@ const fieldList = (field) =>
 const sportSelect = (sport) =>
   <option>{sport.sport}</option>
 
-export default function Canchas() {
   const [canchas, setCanchas] = useState([])
   const [search, setSearch] = useState('')
   const searchInput = useRef('')
@@ -38,7 +37,7 @@ export default function Canchas() {
   )
   useEffect(() => {
     axios.get(apiUrl + `/fields?city=${search}`)
-      .then(response => { setCanchas(response.data) },
+      .then(response => { setCanchas(response?.data) },
       )
   }, [canchas])
 
@@ -92,7 +91,7 @@ export default function Canchas() {
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {canchas?.map(fieldList)}
+            {canchas?.response.map(fieldList)}
           </div>
         </div>
       </main>
