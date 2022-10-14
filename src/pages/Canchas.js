@@ -92,7 +92,7 @@ export default function Canchas() {
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {canchas?.response?.map(fieldList)}
+            {canchas?.map(fieldList)}
           </div>
         </div>
       </main>
