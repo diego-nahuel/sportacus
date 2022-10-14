@@ -52,6 +52,7 @@ useEffect(() => {
   const cart = useSelector(state => state)
   const addToCart = (id) => {dispatch(ADD_TO_CART(id))}
   let newSet = [...new Set(allProducts.map(p => p.sport))]
+  let sports = ["Boxeo", "Futbol", "Basquet", "Voleibol", "Tenis", "Varios", "Natacion"]
   
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -99,7 +100,7 @@ useEffect(() => {
           </div>
 
           <div className='FilterSort bg-dark br3 space-between w100'>
-            <div className='Checkboxes justify-start'>
+            <div className='Checkboxes justify-start  xpad-15'>
 
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
                 <div className='row xpad-10 space-between'>
@@ -112,7 +113,13 @@ useEffect(() => {
                   </button> : null}
               </div>
                     
-              {newSet.map((sport) => SportCheckDesktop(sport,change))}
+              <label className='justify-center check-indent' htmlFor="all" >
+                <input type="radio" onChange={change} value="" id="all" name="sport" ></input>
+                Todos
+              </label>
+
+              {sports.map((sport) => SportCheckDesktop(sport,change))}
+
             </div>
           </div>
 
