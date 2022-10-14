@@ -7,30 +7,30 @@ export const authAPI = createApi({
         baseUrl: apiUrl
     }),
     endpoints: (builder) => ({
-        registro: builder.mutation({
+        signUp: builder.mutation({
             query: (user) => ({
-                url: `/usuarios/signup`,
+                url: `/users/signup`,
                 method: 'POST',
                 body: user
             })
         }),
-        inicioSesion: builder.mutation({
+        signIn: builder.mutation({
             query: (user) => ({
-                url: `/usuarios/signin`,
+                url: `/users/signin`,
                 method: 'POST',
                 body: user
             })
         }),
-        cerrarSesion: builder.mutation({
+        signOut: builder.mutation({
             query: (user) => ({
-                url: `/usuarios/signout`,
+                url: `/users/signout`,
                 method: 'POST',
                 body: user
             })
         }),
         verifyToken: builder.query({
             query: (token) => ({
-                url: `/usuarios/token`,
+                url: `/users/token`,
                 method: 'GET',
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -38,4 +38,4 @@ export const authAPI = createApi({
     })
 })
 
-export const {useRegistroMutation, useInicioSesionMutation, useCerrarSesionMutation, useLazyVerifyTokenQuery} = authAPI
+export const {useSignUpMutation, useSignInMutation, useSignOutMutation, useLazyVerifyTokenQuery} = authAPI

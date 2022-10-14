@@ -1,40 +1,43 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import apiUrl from "../API";
 
-const comentariosAPI =  createApi({
-    reducerPath: 'comentariosAPI',
+export const commentsAPI =  createApi({
+    reducerPath: 'commentsAPI',
 
     baseQuery: fetchBaseQuery({
         baseUrl: apiUrl
     }),
     endpoints: (builder) => ({
-        crearComentario: builder.mutation({
+        createComment: builder.mutation({
             query:(newComment) => ({
-                url:`/comentario`,
+                url:`/comments`,
                 method: 'POST',
                 body: newComment,
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
-        comentarios: builder.query({
-            query: (id) => `/comentario?cancha=${id}`
+        allComments: builder.query({
+            query: (id) => `/comments?fields=${id}`
         }),
-        esditarComentario: builder.mutation({
+        editComment: builder.mutation({
             query: ({comment, id}) => ({
-                url: `/comentario/${id}`,
+                url: `/comments/${id}`,
                 method: 'PATCH',
                 body: {comment: comment},
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
-        borrarComentario: builder.mutation({
+        deleteComment: builder.mutation({
             query: (id) => ({
-                url: `/comentario/${id}`,
+                url: `/comments/${id}`,
                 method: 'DELETE',
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
+        getFromField: builder.query({
+            query:(id)=> `/comments/query?field=${id}`
+        })
     })
 });
 
-export const {} = comentariosAPI
+export const {useAllCommentsQuery, useEditCommentMutation, useDeleteCommentMutation, useCreateCommentMutation, useGetFromFieldQuery} = commentsAPI

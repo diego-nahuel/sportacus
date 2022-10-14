@@ -1,27 +1,21 @@
 import '../styles/Header.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
+import pages from './Links/Pages'
+import pagesAdmin from './Links/PagesAdmin';
+import UserMenu from './UserMenu';
+import CartWidget from './CartWidget';
+import { useDispatch, useSelector } from 'react-redux';
 
-const pages = [
-  { name: 'Home', to: '/' },
-  { name: 'Productos', to: '/productos' },
-  { name: 'Alquileres', to: '/alquileres' },
-  { name: 'Comunidad', to: '/comunidad' },
-  { name: 'Contacto', to: '/contacto' },
-]
 
-const userMenu = [
-  { name: 'Loguéate', to: '/auth/signin' },
-  { name: 'Registrarse', to: '/auth/signup' }
-]
-
-const navLinks = (page) => <LinkRouter className='NavBar-Links Menu-Hover' to={page.to} key={page.name}>{page.name}</LinkRouter>
-const userLinks = (page) => <LinkRouter className='NavBar-Links Avatar-Links' to={page.to} key={page.name}>{page.name}</LinkRouter>
+const navLinks = (page) => <LinkRouter className='NavBar-Links br3 xpad-5' to={page.to} key={page.name}>{page.name}</LinkRouter>
+const userLinks = (page) => <LinkRouter className='NavBar-Links font-s Links-Red br3' to={page.to} key={page.name}>{page.name}</LinkRouter>
 
 function Header() {
+  const userRedux = useSelector(state => state.user.u);
   const [openNav, setOpenNav] = useState(false)
   const [openUser, setOpenUser] = useState(false)
-
+  const [role, setRole]=useState('')
   const handleOpenNavMenu = () => {
     if (openNav == true) {
       setOpenNav(false)
@@ -30,39 +24,48 @@ function Header() {
     }
   }
 
-  const handleOpenUserMenu = () => {
-    if (openUser == true) {
-      setOpenUser(false)
-    } else {
-      setOpenUser(true)
-    }
-  }
+  const userMenu = [
+    { name: 'Perfil', to: '/auth/perfil' },
+    { name: 'Loguéate', to: '/auth/signin' },
+    { name: 'Registrarse', to: '/auth/signup' }
+  ]
+
+  useEffect(()=>{
+     localStorage.getItem("user")?
+     setRole(JSON.parse(localStorage.getItem("user")).role):setRole('Visitor')  
+},[])
+console.log(role)
 
   return (
     <>
       <header className='NavBar NavBar-Links w100'>
         {/* Mobile */}
-        <nav className='Col-Menu col w25 align-start'>
-          {pages.map(navLinks)}
-        </nav>
-        <div className='Logo-Mobile-Container align-start justify-center'>
+        <button className='Hide-Desktop bg-dark br-none' onClick={handleOpenNavMenu}>
+          <img className='Burger-IMG Hide-Nav-Burger justify-start' src='/MenuBurger.png' />
+          {
+            openNav ?
+              <nav className='Col-Menu col w25 align-start'>
+                {userRedux?userRedux.role==='admin'?(pagesAdmin.map(navLinks)):(pages.map(navLinks)):(pages.map(navLinks))}
+              </nav> : null
+          }
+        </button>
+        <LinkRouter to='/' className='Logo-Mobile-Container align-start justify-center'>
           <img className='Logo-Mobile' src='/LogoSportacus01-Light.png' alt='logoSportacus' />
-        </div>
+        </LinkRouter>
 
         {/* Desktop */}
-        <div className='Logo-Desktop-Container justify-center'>
+        <LinkRouter to='/' className='Logo-Desktop-Container Hide-Nav-Desktop justify-center'>
           <img className='Logo-Desktop' src='/LogoNav02-Light.png' alt='logoSportacus' />
-        </div>
+        </LinkRouter>
         <nav className='Row-Menu row w50 justify-center'>
-          {pages.map(navLinks)}
+        {userRedux?userRedux.role==='admin'?(pagesAdmin.map(navLinks)):(pages.map(navLinks)):(pages.map(navLinks))}
         </nav>
 
         {/* Cart/Users */}
-        <div className='User-Menu row w25'>
-          <div>Carrito</div>
-          <div>
-            {userMenu.map(userLinks)}
-          </div>
+        <div className='justify-end row w25'>
+          <LinkRouter to='carrito' className='CartLink'><CartWidget/></LinkRouter>
+          <UserMenu/>
+
         </div>
       </header>
     </>

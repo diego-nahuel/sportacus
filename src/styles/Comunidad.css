@@ -1,14 +1,10 @@
 .Contenedor-Comentario {
-    background-color: whitesmoke;
     max-width: 100%;
-    width: 850px;
-    margin: 0 10px;
+    width: 960px;
     border-radius: 3px;
 }
 
 .Usuario-Info {
-    background-color: aqua;
-    padding: 5px 20px;
     font-size: large;
     font-weight: bold;
     border-radius: 3px 0 0 3px;
@@ -17,7 +13,7 @@
 .Usuario-IMG {
     width: 75px;
     height: 75px;
-    border-radius: 360px;
+    border-radius: 3px;
     object-fit: cover;
 }
 
@@ -29,9 +25,8 @@
 }
 
 .Contenedor-NuevoComentario {
-    max-width: 850px;
+    max-width: 960px;
     width: 100%;
-    margin: 0 10px;
 }
 
 .Textarea-NuevoComentario {
