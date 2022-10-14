@@ -1,26 +1,25 @@
 import React from 'react'
 import { CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from '../reducers/ShoppingReducer'
 import '../styles/Cart.css'
-// import '../styles/Components.css'
 import CartItem from './CartItem'
-import { useDispatch, useSelector } from 'react-redux'
-import '../styles/Cart.css'
+import { useDispatch, useSelector } from 'react-redux';
+import styles from '../components/Styles'
 
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.shoppingReducer.cart)
 
-  const delFromCart = (id,all=false) => {
-      if(all){
-        dispatch(REMOVE_ALL_FROM_CART(id))
-      } else {
-        dispatch(REMOVE_ONE_FROM_CART(id))
-      }
+  const delFromCart = (id, all = false) => {
+    if (all) {
+      dispatch(REMOVE_ALL_FROM_CART(id))
+    } else {
+      dispatch(REMOVE_ONE_FROM_CART(id))
+    }
   }
 
   const clearCart = () => {
-      dispatch(CLEAR_CART())
+    dispatch(CLEAR_CART())
   }
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -31,28 +30,33 @@ const ShoppingCart = () => {
   })
   const total = formatNumber(addition)
   return (
-    <div className='cart-ontainer'>
-    <h2 className='cart-title'>Carrito de compras</h2>
-    {cart.length > 0?
-    <>
-      <h3>Productos</h3>
-      <article className='box-cart'>
-        <div className='cart-card'>
-        {cart.map((item,index) => <CartItem key={index} data={item} delFromCart={delFromCart}/>)}
-        </div>
-        <div className='total-container'>
-        <h4 className='total'>Total: ${total}</h4>
-        <div className='buttons'><button className='btn-clear' onClick={clearCart}>Limpiar Carrito</button>
-        <button className='btn-buy'>Comprar</button></div>
-        </div>
-      </article>
-    </>
-    :
-    <>
-    <h3>No hay productos en el Carrito</h3>
-    </>
-    }
-    
+    <div className='xpad-10 main-height bg container-width ypad-10 col gap-5'>
+      <h2 className={styles.h2Cart}>Carrito de compras</h2>
+      <div className={styles.dividerLight}></div>
+      {cart.length > 0 ?
+        <>
+          <article className='br3 pad-15 col-row-768 gap-15'>
+            <div className='col-row-768 w100-75 space-evenly wrap gap-30'>
+              {cart.map((item, index) => <CartItem key={index} data={item} delFromCart={delFromCart} />)}
+            </div>
+
+            <div className={styles.dividerLight}></div>
+
+            <div className='w100-25 col gap-10'>
+              <h4 className='text-right text-light font-xl'>Total: ${total}</h4>
+              <div className='space-between col-row-768 gap-15 w100'>
+                <button className={styles.cartButton} onClick={clearCart}>Limpiar Carrito</button>
+                <button className={styles.cartButton}>Comprar</button>
+              </div>
+              <div className='display-none-t xdivider-light ydivider-light transparent-50 w100'></div>
+            </div>
+          </article>
+        </>
+        :
+        <>
+          <h3>No hay productos en el Carrito</h3>
+        </>
+      }
     </div>
   )
 }
