@@ -1,9 +1,12 @@
 import '../styles/Components.css'
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef} from 'react';
 import { useGetAllQuery } from '../features/productsApi';
 import StopPropagation from '../actions/StopPropagation';
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
+import { ADD_TO_CART } from '../reducers/ShoppingReducer';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 export default function Productos() {
@@ -47,14 +50,13 @@ useEffect(() => {
     }
   }, [petition])
 
-  let newSet = [...new Set(allProducts.map(p => p.sport))]
-  
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-  }
-  const productList = (product) =>
+  const dispatch = useDispatch()
+  const cart = useSelector(state => state)
+  const addToCart = (id) => {dispatch(ADD_TO_CART(id))}
+
+  const productList = (product, index) =>
     <>
-      <div className='Card bg-dark br3'>
+      <div className='Card bg-dark br3' key={index}>
         <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{product.name}</h4>
         <img className='IMG-Card' src={product.image} alt=''/>
         <p className='xpad-10 h75 overflow-hidden font-n w-normal'>{product.description}</p>
@@ -71,7 +73,7 @@ useEffect(() => {
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${formatNumber(product.price)}</p>
           <button className='Card-Button submit-button br-none w50 text-dark form-padding font-14'
-            onClick={()=>localStorage.setItem('carrito', product)}>Agregar</button>
+           onClick={() => addToCart(product._id)}>Comprar</button>
         </div>
       </div>
     </>

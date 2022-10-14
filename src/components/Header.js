@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
 import pages from './Links/Pages'
 import UserMenu from './UserMenu';
+import CartWidget from './CartWidget';
 
 const navLinks = (page) => <LinkRouter className='NavBar-Links br3 xpad-5' to={page.to} key={page.name}>{page.name}</LinkRouter>
 const userLinks = (page) => <LinkRouter className='NavBar-Links font-s Links-Red br3' to={page.to} key={page.name}>{page.name}</LinkRouter>
@@ -53,6 +54,7 @@ function Header() {
 
         {/* Cart/Users */}
         <div className='justify-end row w25'>
+          <LinkRouter to='carrito' className='CartLink'><CartWidget/></LinkRouter>
           <UserMenu/>
         </div>
       </header>

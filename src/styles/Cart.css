@@ -1,0 +1,97 @@
+.cart-ontainer{
+    min-height: 71.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.cart-title{
+    margin: 5vh 0 ;
+}
+.box-cart{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 30px;
+    background: rgb(236, 236, 236);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.cart-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.total-container{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.total{
+    margin: 20px;
+}
+.buttons{
+    display: flex;
+    gap: 50px;
+}
+.btn-clear,.btn-buy {
+    cursor: pointer;
+}
+
+/* From uiverse.io by @abrahamcalsin */
+.card-client {
+    background: #2cb5a0;
+    width: 13rem;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 4px solid #7cdacc;
+    box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .card-client:hover {
+    transform: translateY(-10px);
+  }
+  
+  .user-picture {
+    overflow: hidden;
+    object-fit: cover;
+    width: 5rem;
+    height: 5rem;
+    border: 4px solid #7cdacc;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  
+  .user-picture svg {
+    width: 2.5rem;
+    fill: currentColor;
+  }
+  
+  .name-client {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  
+  .name-client span {
+    display: block;
+    font-weight: 200;
+    font-size: 16px;
+  }
+  
+  .icon-cartItem{
+    cursor: pointer;
+    margin: 10px;
+  }

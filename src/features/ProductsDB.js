@@ -144,3 +144,12 @@ export let ProductDB = [
         "type": "Guantes"
       }
   ]
+
+// import { useGetAllQuery } from './productsApi';
+
+// const ApiProduct = () => {
+//     const { data: product} = useGetAllQuery('');
+//     const apiProduct = product.response;
+//   return apiProduct
+// }
+// export default ApiProduct;

@@ -214,3 +214,12 @@
     transform: translateY(0);
     transition: 500ms ease;
 }
+.CartLink{
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.CartLink:hover{
+    transform: scale(1.1);
+}

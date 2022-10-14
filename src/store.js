@@ -4,6 +4,7 @@ import { authAPI } from "./features/authAPI";
 import { productsApi} from "./features/productsApi";
 import {fieldsApi} from "./features/fieldsApi";
 import { commentsAPI } from "./features/commentAPI";
+import  shoppingReducer  from "./reducers/ShoppingReducer";
 
 export default configureStore ({
     reducer: {
@@ -17,7 +18,9 @@ export default configureStore ({
         [fieldsApi.reducerPath]:fieldsApi.reducer,
 
         comments: commentsAPI,
-        [commentsAPI.reducerPath]:commentsAPI.reducer
+        [commentsAPI.reducerPath]:commentsAPI.reducer,
+
+        shoppingReducer
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
