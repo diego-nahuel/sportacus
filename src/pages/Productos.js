@@ -1,5 +1,5 @@
 import '../styles/Components.css'
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import { useGetAllQuery } from '../features/productsApi';
 import StopPropagation from '../actions/StopPropagation';
 import SportCheckDesktop from '../actions/SportsCheckD';
@@ -53,7 +53,11 @@ useEffect(() => {
   const dispatch = useDispatch()
   const cart = useSelector(state => state)
   const addToCart = (id) => {dispatch(ADD_TO_CART(id))}
-
+  let newSet = [...new Set(allProducts.map(p => p.sport))]
+  
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+  }
   const productList = (product, index) =>
     <>
       <div className='Card bg-dark br3' key={index}>
