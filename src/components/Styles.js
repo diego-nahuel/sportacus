@@ -4,7 +4,9 @@ const styles = {
     dividerDark: 'xdivider-dark ydivider-dark transparent-25',
     cardName: 'bpad-5 xpad-10 w-normal font-l text-center text-dark',
     h2Profile: 'text-light text-center',
-    infoProfile: 'w-normal bpad-10 flex wrap w-normal flex wrap',
+
+    infoProfile: 'w-normal bpad-10 flex wrap w-normal flex wrap font-14',
+
     editCommentButton: 'br6-tl br-lightblue transition form-padding bg-dark text-light',
     deleteCommentButton: 'br3-br br-lightblue transition form-padding bg-dark text-light'
 }
