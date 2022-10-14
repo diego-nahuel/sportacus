@@ -29,3 +29,12 @@
     /* color:red; */
     color: #ff3847;
 }
+
+.radius{
+    border-radius: 5px;
+}
+
+.sportacus{
+    font-weight: bold;
+    text-decoration: underline;
+}
