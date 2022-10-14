@@ -8,10 +8,10 @@ import DeleteComment from '../components/Comentarios/DeleteComment'
 function Comunidad() {
 
   const commentsArray = [
-    { name: 'Ignacio', comment: 'Holi', userPhoto: 'https://media.distractify.com/brand-img/payNR5Jfb/0x0/is-korra-the-last-avatar-1595380417772.png' },
-    { name: 'Jere', comment: 'Holi', userPhoto: 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2022/03/avatar-facebook-2632445.jpg?itok=humq0Qgg' },
-    { name: 'Diego', comment: 'Holi', userPhoto: 'https://variety.com/wp-content/uploads/2022/02/Screen-Shot-2022-05-09-at-10.04.13-AM.png' },
-    { name: 'Juan', comment: 'Holi', userPhoto: 'https://www.clarin.com/img/2020/08/16/avatar-the-last-airbender-foto___pck4_8liS_1256x620__2.jpg#1597613994196' }
+    { name: 'Ignacio', comment: 'Holi', userPhoto: 'http://www.cmtv.com.ar/imagenes_artistas/2371.jpg?Porta' },
+    { name: 'Diego', comment: 'Holi', userPhoto: 'https://i.pinimg.com/564x/23/d1/e7/23d1e78c732a2d73e346cad80403b11f.jpg' },
+    { name: 'Jere', comment: 'Holi', userPhoto: 'https://smsh-14-140934-juc1ugur1qwqqqo4.stackpathdns.com/953582/wp-content/uploads/2018/01/better-smile-tips-technique-eyes.jpg?lossy=0&strip=1&webp=1' },
+    { name: 'Juan', comment: 'Holi', userPhoto: 'https://pbs.twimg.com/media/FeaHqTaWYAA4XUr?format=jpg&name=large' }
   ]
 
   let role = ""
