@@ -17,7 +17,6 @@ export default function Productos() {
   const [query, setQuery] = useState("all")
   const searching = (e) => {
     setSearch(e.target.value);
-    console.log(e.target.value);
   }
   
   const change = (e) =>{
@@ -46,7 +45,6 @@ useEffect(() => {
     } else if (isSuccess) {
       petition = petition
       petition.response ? setAllProducts(petition.response) : setAllProducts(petition)
-      console.log(petition);
     }
   }, [petition])
 
