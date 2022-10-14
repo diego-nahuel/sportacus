@@ -1,15 +1,18 @@
+import axios from 'axios'
 import '../styles/Components.css'
 import { React, useEffect, useRef, useState } from 'react'
+import apiUrl from '../API'
 import { Link as LinkRouter } from 'react-router-dom'
+import { useAllFieldsQuery } from '../features/fieldsApi'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
-import { useAllFieldsQuery } from '../features/fieldsApi'
+import sports from '../actions/SportList'
 
 const fieldList = (field) =>
   <div className='Card bg-dark br3'>
     <h4 className='xpad-10 pad-5 w-normal font-l text-center'>{field.name}</h4>
-    <img className='IMG-Card' src={field.image} alt=''/>
+    <img className='IMG-Card' src={field.image} />
     <p className='xpad-10'>Deporte: {field.sport}</p>
     <div className='xdivider-light transparent-25 ymar-10'></div>
     <p className='xpad-10'>Ciudad: {field.city}</p>
@@ -22,56 +25,29 @@ const fieldList = (field) =>
     </div>
   </div>
 
-const sportCheck = (field) =>
-  <button className='br3 form-padding button-check'>
-    <label className='align-center check-indent'>
-      <input type="checkbox" className=''></input>
-      {field.sport}
-    </label>
-  </button>
+const sportSelect = (sport) =>
+  <option>{sport.sport}</option>
 
 export default function Canchas() {
   const [canchas, setCanchas] = useState([])
-  const [handleCheck, setHandleCheck] = useState([]);
   const [search, setSearch] = useState('')
   const searchInput = useRef('')
   const accion = () => (
-    setSearch(searchInput.current.value)
+    setSearch(searchInput.current.value),
+    console.log(search)
   )
-  const change = (e) =>{
-    setHandleCheck({...handleCheck, [e.target.value]: e.target.checked})
-  }
-
   useEffect(() => {
-    function filterBySport(value){
-      if(handleCheck !== undefined){
-        if(handleCheck.sport === true){
-          return value.sport
-        }
-      } else{
-        return value
-      }
-    }
-    setCanchas(filterBySport)
-  }, [handleCheck])
+    axios.get(apiUrl + `/fields?city=${search}`)
+      .then(response => { setCanchas(response.data) },
+      )
+  }, [canchas])
 
-  let { data: petition, isLoading, isSuccess } = useAllFieldsQuery(search)
-  useEffect(() => {
-    if (isLoading) {
-      petition = []
-    } else if (isSuccess) {
-      petition = petition
-    }
-    petition?.response ? setCanchas(petition.response) : setCanchas(petition)
-  }, [petition])
-  let newSet = [...new Set(canchas?.map(p => p.sport))]
-
-  const fieldCard = (field) =>
-    <div>
-      <h2>{field.name}</h2>
-      <img alt={field.name} src={field.image} />
-      <p>{field.city}</p>
-    </div>
+  // let {data:canchas,isLoading,isSuccess } = useAllFieldsQuery(search)
+  // if (isLoading) {
+  //   canchas = []
+  // } else if (isSuccess) {
+  //   canchas = canchas
+  // }
 
   const [OpenCheckbox, setOpenCheckbox] = useState(false)
   const handleOpenCheckbox = () => {
@@ -98,20 +74,25 @@ export default function Canchas() {
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
                 <div className='row xpad-10 space-between'>
                   <h5 className='text-light w-normal font-n ypad-5'>Categorías </h5>
-                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' alt=''/>
+                  <img className='h25 align-end bpad-5' src='https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png' />
                 </div>
                 {OpenCheckbox ?
                   <button className='br3 w100 form-padding button-check' onClick={StopPropagation}>
-                    {newSet?.map((sport) => SportCheckMobile(sport, change))}
+                    {sports.map(SportCheckMobile)}
                   </button> : null}
               </div>
 
-              {newSet?.map((sport) => SportCheckDesktop(sport, change))}
+              {sports.map(SportCheckDesktop)}
             </div>
+
+            <select className='Select form-padding bg-light flex-end'>
+              <option></option>
+              {sports.map(sportSelect)}
+            </select>
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {canchas?.map(fieldList)}
+            {canchas?.response?.map(fieldList)}
           </div>
         </div>
       </main>
