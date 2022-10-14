@@ -16,12 +16,12 @@ export default function Home() {
         <div className='container-width bg blur pad-10 col gap-5'>
           <div className='col-row-768'>
             <div className='w100-50'>
-              <h2 className={styles.h2}>Canchas Populares</h2>
+              <h2 className={styles.h2Home}>Canchas Populares</h2>
               <CarouselFields />
             </div>
             <div className={styles.dividerLight}></div>
             <div className='w100-50'>
-              <h2 className={styles.h2}>Productos Destacados</h2>
+              <h2 className={styles.h2Home}>Productos Destacados</h2>
               <CarouselProducts />
             </div>
           </div>
