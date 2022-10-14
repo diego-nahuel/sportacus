@@ -4,9 +4,9 @@ import '../styles/Components.css'
 
 function Cart() {
   return (
-    <div>
+    <main className='main-bg justify-center'>
         <ShoppingCart/>
-    </div>
+    </main>
   )
 }
 

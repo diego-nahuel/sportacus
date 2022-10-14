@@ -7,7 +7,7 @@ export default function Profile() {
 
   const user = {
     name: 'Ignacio',
-    mail: 'ignaciogiusti94@gma il.com'
+    mail: 'nachogiusti94@gmail.com'
   }
 
   const formUserData = [
