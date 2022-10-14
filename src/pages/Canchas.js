@@ -38,9 +38,10 @@ export default function Canchas() {
   )
   useEffect(() => {
     axios.get(apiUrl + `/fields?city=${search}`)
-      .then(response => { setCanchas(response.data) },
+      .then(response => { setCanchas(response?.data) },
       )
   }, [canchas])
+  console.log(canchas);
 
   // let {data:canchas,isLoading,isSuccess } = useAllFieldsQuery(search)
   // if (isLoading) {
@@ -92,7 +93,7 @@ export default function Canchas() {
           </div>
 
           <div className='card-container justify-center gap-30'>
-            {canchas?.map(fieldList)}
+            {canchas?.response?.map(fieldList)}
           </div>
         </div>
       </main>
