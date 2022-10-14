@@ -1,8 +1,8 @@
-const SportCheckMobile = (sport) =>
+const SportCheckMobile = (sport, change) =>
 <>
   <label className='Checkbox-Responsive-Divider align-center check-indent ypad-5'>
-    <input type="checkbox"></input>
-    {sport.sport}
+    <input type="checkbox" onChange={change} value={sport}></input>
+    {sport}
   </label>
 </>
 

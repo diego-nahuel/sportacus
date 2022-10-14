@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import apiUrl from "../API";
-import { useNewFieldsMutation } from "../features/fieldsApi";
+import { useNewFieldsMutation } from "../features/fieldsAPI";
 import '../styles/NewField.css'
 
 export default function NewField() {

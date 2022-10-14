@@ -1,11 +1,9 @@
-const SportCheckDesktop = (sport) =>
+const SportCheckDesktop = (sport, change) =>
     <>
-      <button className='Hide-Checkbox-Mobile form-padding button-check'>
-        <label className='justify-center check-indent'>
-          <input type="checkbox"></input>
-          {sport.sport}
-        </label>
-      </button>
+      <label className='justify-center check-indent' htmlFor={sport} >
+        <input type="radio" onChange={change} value={sport} id={sport} name="sport" ></input>
+        {sport}
+      </label>
     </>
 
 export default SportCheckDesktop;
