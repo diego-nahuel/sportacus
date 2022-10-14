@@ -34,6 +34,7 @@ export default function Contacto() {
 
           <div className='xdivider-light ydivider-light transparent-50 br360 w100'></div>
 
+          <h2>Nuestra ubicacion</h2>
           <div className='Columna-Contacto'>
             <iframe height="600" className='w100 br10' src="https://maps.google.com/maps?q=Club%20Atl%C3%A9tico%20Boca%20Juniors&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
           </div>
