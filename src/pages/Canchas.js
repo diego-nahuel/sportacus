@@ -3,7 +3,7 @@ import '../styles/Components.css'
 import { React, useEffect, useRef, useState } from 'react'
 import apiUrl from '../API'
 import { Link as LinkRouter } from 'react-router-dom'
-import { useAllFieldsQuery } from '../features/fieldsApi'
+import { useAllFieldsQuery } from '../features/fieldsAPI'
 import StopPropagation from '../actions/StopPropagation'
 import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
