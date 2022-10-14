@@ -11,7 +11,7 @@ import ModalSignUp from './UserMenu/ModalSignUp'
 function UserMenu() {
     const userRedux = useSelector(state => state.user.u);
     const dispatch = useDispatch();
-    // const [signIn] = useSignInMutation()
+    const [signIn] = useSignInMutation()
     const [signOut] = useSignOutMutation()
     let Navigate = useNavigate()
     const [open, setOpen] = useState(false)
@@ -19,11 +19,11 @@ function UserMenu() {
         mail: "", password: "", from: "form"
     });
 
-    useEffect(()=>{
-        JSON.parse(localStorage.getItem('user'))?
-        dispatch(addUser(JSON.parse(localStorage.getItem('user')))):
-        dispatch(removeUser(null))
-    },[])
+    useEffect(() => {
+        JSON.parse(localStorage.getItem('user')) ?
+            dispatch(addUser(JSON.parse(localStorage.getItem('user')))) :
+            dispatch(removeUser(null))
+    }, [])
 
     /* Modal */
     const [modalSignIn, setModalSignIn] = useState(false)
@@ -85,46 +85,13 @@ function UserMenu() {
         localStorage.removeItem("user")
         localStorage.removeItem("token")
     }
-    // const SignInClick = () => {
-    //     (async () => {
-    //         setOpen(false)
-    //         const { value: formValues } = await Swal.fire({
-    //             title: 'Inicio de Sesión',
-    //             html:
-    //                 '<input id="swal-input1" type="email" name="mail" placeholder="Correo electrónico" class="swal2-input">' +
-    //                 '<input id="swal-input2" type="password" placeholder="Contraseña" class="swal2-input">',
-    //             focusConfirm: false,
-    //             preConfirm: () => {
-    //                 return [
-    //                     document.getElementById('swal-input1').value,
-    //                     document.getElementById('swal-input2').value
-    //                 ]
-    //             }
-    //         })
-    //         if (formValues) {
-    //             setUser({
-    //                 ...user, mail: formValues[0], password: formValues[1]
-    //             })
-    //             console.log(user);
-    //             let { data, error } = await signIn(user);
-    //             if (error) {
-    //                 Swal.fire({ icon: "error", title: "Error", text: error.data.message })
-    //             } else {
-    //                 localStorage.setItem("token", data.response.token);
-    //                 dispatch(addUser(data.response.user));
-    //                 Swal.fire(`Bienvenido ${data.response.user.name}`)
-    //                 Navigate("/");
-    //             }
-    //         }
-    //     })()
-    // }
 
     return (
         <>
             <div>
-                {userRedux?
-                <img className='Burger-IMG br3' src={userRedux.photo} onClick={() => { setOpen(!open) }} />:
-                <img className='Burger-IMG br3' src='https://icon-library.com/images/user-icon-png-transparent/user-icon-png-transparent-17.jpg' onClick={() => { setOpen(!open) }} />}
+                {userRedux ?
+                    <img className='Burger-IMG br3' src={userRedux.photo} onClick={() => { setOpen(!open) }} /> :
+                    <img className='Burger-IMG br3' src='https://icon-library.com/images/user-icon-png-transparent/user-icon-png-transparent-17.jpg' onClick={() => { setOpen(!open) }} />}
 
                 <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
                     {userRedux ?
