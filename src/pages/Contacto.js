@@ -13,11 +13,11 @@ export default function Contacto() {
 
             <div className='Info'>
               <div className='bg-light br3 xpad-10 ypad-5 col text-dark'>
-                <h3>Queres volverte socio?</h3>
+                <h3>¿Queres volverte socio?</h3>
                 <p className='text-indent'>Como socio vas a poder publicar y administrar las canchas con las que trabajes</p>
                 <div className='xdivider-dark ydivider-light transparent-25 br360 w100 ymar-10'></div>
-                <h3>Queres volverte socio?</h3>
-                <p className='text-indent'>Dejanos un mensaje usando el formulario en pantalla y en breve nos pondremos en contacto para verificarte como socio.</p>
+                <h3>¿Que tenes que hacer?</h3>
+                <p className='text-indent'>Simplemente dejanos un mensaje usando el formulario en pantalla y en breve nos pondremos en contacto para verificarte como socio.</p>
               </div>
             </div>
 
