@@ -54,7 +54,7 @@ const ShoppingCart = () => {
         </>
         :
         <>
-          <h3>No hay productos en el Carrito</h3>
+          <h3 className='ypad-30 text-center text-light'>No hay productos en el Carrito</h3>
         </>
       }
     </div>

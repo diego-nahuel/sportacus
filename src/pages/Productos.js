@@ -97,7 +97,7 @@ export default function Productos() {
             <input className='Search-Input br3 form-padding bg-light align-end' type="search" ref={searchInput} placeholder="Busque un producto..." onChange={searching}></input>
           </div>
 
-          <div className='FilterSort bg-dark br3 space-between w100'>
+          <div className='FilterSort bg-dark br3 space-between'>
             <div className='Checkboxes justify-start  xpad-15'>
 
               <div className='Hide-Checkbox-Desktop bg-dark col br3 w100' onClick={handleOpenCheckbox}>
@@ -124,9 +124,10 @@ export default function Productos() {
                 {sports.map((sport) => SportCheckDesktop(sport, change))}
               </div>
 
-
             </div>
           </div>
+
+          <div className='xdivider-light transparent-50'></div>
 
           <div className='card-container justify-center gap-30'>
             {allProducts?.map(productList)}
