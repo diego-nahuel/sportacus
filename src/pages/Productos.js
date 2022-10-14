@@ -9,39 +9,46 @@ import SportCheckMobile from '../actions/SportsCheckM';
 export default function Productos() {
   let [search, setSearch] = useState('')
   const [allProducts, setAllProducts] = useState([])
-  const [handleCheck, setHandleCheck] = useState([]);
+  const [handleCheck, setHandleCheck] = useState("");
   const searchInput = useRef()
-  const searching = () => (
-    setSearch(searchInput.current.value)
-  )
+  const [query, setQuery] = useState("all")
+  const searching = (e) => {
+    setSearch(e.target.value);
+    console.log(e.target.value);
+  }
   
   const change = (e) =>{
-    setHandleCheck({...handleCheck, [e.target.value]: e.target.checked})
+    setHandleCheck(e.target.value)
   }
+useEffect(() => {
+  if(search === "" && handleCheck === ""){
+    setQuery("all")
+  } else if(search === "" && handleCheck !== ""){
+    setQuery(`all&sport=${handleCheck}`)
+  } else if(search !== "" && handleCheck !== "") {
+    setQuery(`${search}&sport=${handleCheck}`)
+  }else if(search !== "" && handleCheck === ""){
+    setQuery(search)
+  }
+}, [search,handleCheck])
 
-  useEffect(() => {
-    function filterBySport(value){
-      if(handleCheck !== undefined){
-        if(handleCheck.sport === true){
-          return value.sport
-        }
-      } else{
-        return value
-      }
-    }
-    setAllProducts(filterBySport)
-  }, [handleCheck])
+
+
   
-  let { data: petition, isLoading, isSuccess } = useGetAllQuery(search)
+  let { data: petition, isLoading, isSuccess } = useGetAllQuery(query)
+
   useEffect(() => {
     if (isLoading) {
       petition = []
     } else if (isSuccess) {
       petition = petition
+      petition.response ? setAllProducts(petition.response) : setAllProducts(petition)
+      console.log(petition);
     }
-    petition?.response ? setAllProducts(petition.response) : setAllProducts(petition)
   }, [petition])
-  let newSet = [...new Set(allProducts?.map(p => p.sport))]
+
+  let newSet = [...new Set(allProducts.map(p => p.sport))]
+  
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
@@ -100,8 +107,8 @@ export default function Productos() {
                     {newSet.map((sport) => SportCheckMobile(sport, change))}
                   </button> : null}
               </div>
-
-              {newSet.map((sport) => SportCheckDesktop(sport, change))}
+                    
+              {newSet.map((sport) => SportCheckDesktop(sport,change))}
             </div>
           </div>
 
