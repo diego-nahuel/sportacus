@@ -6,6 +6,7 @@ import SportCheckDesktop from '../actions/SportsCheckD';
 import SportCheckMobile from '../actions/SportsCheckM';
 import { ADD_TO_CART } from '../reducers/ShoppingReducer';
 import { useDispatch, useSelector } from 'react-redux';
+import Alert from '../components/Alert';
 
 export default function Productos() {
   let [search, setSearch] = useState('')
@@ -46,6 +47,10 @@ export default function Productos() {
   const dispatch = useDispatch()
   const cart = useSelector(state => state)
   const addToCart = (id) => { dispatch(ADD_TO_CART(id)) }
+  const Cart = (id) => {
+    addToCart(id)
+    Alert("success","Agregado")
+  }
   let newSet = [...new Set(allProducts.map(p => p.sport))]
   let sports = ["Boxeo", "Futbol", "Basquet", "Voleibol", "Tenis", "Natacion", "Varios"]
 
@@ -74,7 +79,7 @@ export default function Productos() {
         <div className='space-between w100'>
           <p className='xpad-10 align-center'>Precio: ${formatNumber(product.price)}</p>
           <button className='Card-Button submit-button br-none w50 form-padding font-14'
-            onClick={() => addToCart(product._id)}>Agregar</button>
+            onClick={() => Cart(product._id)}>Agregar</button>
         </div>
       </div>
     </>
