@@ -22,7 +22,7 @@ const CartItem = ({ data, delFromCart }) => {
       </div>
 
         <button className='button-1 transition form-padding w100 font-14' onClick={() => delFromCart(_id)} >Eliminar Uno</button>
-        <button className='br3-b button-2 transition form-padding w100 font-14' onClick={() => delFromCart(_id)} >Eliminar Todos</button>
+        <button className='br3-b button-2 transition form-padding w100 font-14' onClick={() => delFromCart(_id,true)} >Eliminar Todos</button>
     </div>
   )
 }
