@@ -12,6 +12,7 @@
 .Card-Button {
     border-radius: 3px 0 3px 0;
     background-color: aqua;
+    cursor: pointer;
 }
 
 .submit-button {
@@ -66,6 +67,11 @@
     border-radius: 0 0 3px 3px;
 }
 
+.check-indent{
+    cursor: pointer;
+}
+
+
 @media (min-width: 769px) {
     .FilterSort {
         flex-flow: row;
@@ -80,7 +86,7 @@
     .Checkboxes {
         display: flex;
         flex-flow: row wrap;
-        width: 75%;
+        width: 100%;
         gap: 10px;
     }
 

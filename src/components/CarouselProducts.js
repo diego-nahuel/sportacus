@@ -16,7 +16,7 @@ export default function CarouselProducts() {
           <div className='Card col ypad-5 bg-light br3 shadow-y'>
             <h4 className={styles.cardName}>{product.name}</h4>
             <LinkRouter>
-              <img className='IMG-Card' src={product.photo} />
+              <img className='IMG-Card bg-dark' src={product.photo} />
             </LinkRouter>
             <ul className='col list-style-none text-dark xpad-10 min-h25 row space-between'>
               <li>Deporte: {product.sport}</li>
@@ -30,13 +30,13 @@ export default function CarouselProducts() {
 
   return (
     <>
-        <Swiper
-          centeredSlides={true}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}>
-          {products.map(productList)}
-        </Swiper>
+      <Swiper
+        centeredSlides={true}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}>
+        {products.map(productList)}
+      </Swiper>
     </>
   )
 }

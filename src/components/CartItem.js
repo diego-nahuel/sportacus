@@ -7,9 +7,9 @@ const CartItem = ({ data, delFromCart }) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
   return (
-    <div className="Card br3 bg-light text-dark shadow-y col gap-5">
-      <h3 className="text-center w-normal"> {name}</h3>
-      <img className="IMG-Card" src={image} />
+    <div className="Card br3 bg-light text-dark shadow-y col">
+      <h3 className="text-center w-normal ypad-5"> {name}</h3>
+      <img className="IMG-Card bg-dark" src={image} />
       <div className='xpad-10 ypad-5 col gap-5'>
         <span>Precio Unidad: ${formatNumber(price)}
         </span>
@@ -22,7 +22,7 @@ const CartItem = ({ data, delFromCart }) => {
       </div>
 
         <button className='button-1 transition form-padding w100 font-14' onClick={() => delFromCart(_id)} >Eliminar Uno</button>
-        <button className='br3-b button-2 transition form-padding w100 font-14' onClick={() => delFromCart(_id)} >Eliminar Todos</button>
+        <button className='br3-b button-2 transition form-padding w100 font-14' onClick={() => delFromCart(_id,true)} >Eliminar Todos</button>
     </div>
   )
 }

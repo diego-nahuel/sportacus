@@ -4,6 +4,7 @@ import '../styles/Cart.css'
 import CartItem from './CartItem'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../components/Styles'
+import Alert from './Alert';
 
 
 const ShoppingCart = () => {
@@ -20,6 +21,10 @@ const ShoppingCart = () => {
 
   const clearCart = () => {
     dispatch(CLEAR_CART())
+  }
+  const finishBuy = () => {
+    dispatch(CLEAR_CART())
+    Alert("success", "Compra realizada con éxito!")
   }
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -46,7 +51,7 @@ const ShoppingCart = () => {
               <h4 className='text-right text-light font-xl'>Total: ${total}</h4>
               <div className='space-between col-row-768 gap-15 w100'>
                 <button className={styles.cartButton} onClick={clearCart}>Limpiar Carrito</button>
-                <button className={styles.cartButton}>Comprar</button>
+                <button className={styles.cartButton} onClick={finishBuy}>Comprar</button>
               </div>
               <div className='display-none-t xdivider-light ydivider-light transparent-50 w100'></div>
             </div>
@@ -54,7 +59,7 @@ const ShoppingCart = () => {
         </>
         :
         <>
-          <h3>No hay productos en el Carrito</h3>
+          <h3 className='ypad-30 text-center text-light'>No hay productos en el Carrito</h3>
         </>
       }
     </div>

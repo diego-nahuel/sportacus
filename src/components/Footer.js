@@ -30,6 +30,10 @@ export default function Footer() {
           <div className='Footer-Nav card-container ypad-15'>
             {pages.map(navLinks)}
           </div>
+          <div className='col'>
+            <p className='text-light text-center'>SPORTACUS© 2022 | Todos los derechos reservados</p>
+            <p className='text-light text-center'>Acuña-Giusti-Rivarola-Teruel</p>
+          </div>
           <button onClick={ScrollTop} className='ScrollToTop align-end-m'>
             <div className="text">
               <span>S</span>
